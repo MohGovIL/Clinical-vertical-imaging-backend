@@ -6,8 +6,8 @@
 
 $imaging_receptionist_write = @addNewACL('Imaging receptionist', 'imaging_receptionist', 'write', 'Things that imaging receptionist can modify');
 $imaging_receptionist_view = @addNewACL('Imaging receptionist', 'imaging_receptionist', 'view', 'Things that imaging receptionist can read but not modify');
-$imaging_technician_write = @addNewACL('Imaging technician', 'imaging_technician', 'write', 'Things that imaging technician can modify');
-$imaging_technician_view = @addNewACL('Imaging technician', 'imaging_technician', 'view', 'Things that imaging technician can read but not modify');
+$imaging_technician_write = @addNewACL('Imaging Technician', 'imaging_technician', 'write', 'Things that imaging technician can modify');
+$imaging_technician_view = @addNewACL('Imaging Technician', 'imaging_technician', 'view', 'Things that imaging technician can read but not modify');
 $imaging_doctor_write = @addNewACL('Imaging doctor', 'imaging_doctor', 'write', 'Things that imaging doctor can modify');
 $imaging_doctor_view = @addNewACL('Imaging doctor', 'imaging_doctor', 'view', 'Things that imaging doctor can read but not modify');
 $imaging_clinic_manager_write =  @addNewACL('Imaging clinic manager', 'imaging_clinic_manager', 'write', 'Things that imaging clinic manager can modify');

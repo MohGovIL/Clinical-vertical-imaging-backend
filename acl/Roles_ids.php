@@ -24,8 +24,8 @@ class Roles_ids{
                 'imaging_receptionist_write' => getAclIdNumber('Imaging receptionist', 'write'),
                 'imaging_receptionist_view' => getAclIdNumber('Imaging receptionist', 'view'),
 
-                'imaging_technician_write' => getAclIdNumber('Imaging technician', 'write'),
-                'imaging_technician_view' => getAclIdNumber('Imaging technician', 'view'),
+                'imaging_technician_write' => getAclIdNumber('Imaging Technician', 'write'),
+                'imaging_technician_view' => getAclIdNumber('Imaging Technician', 'view'),
 
                 'imaging_doctor_write' => getAclIdNumber('Imaging doctor', 'write'),
                 'imaging_doctor_view' => getAclIdNumber('Imaging doctor', 'view'),
