@@ -2,12 +2,7 @@
 
 return $ACL_UPGRADE = array(
 
-    //example
-    '0.2.0' => function () {
-        //addObjectAcl('admin', 'Administration', 'test', 'Test');
-        //updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'admin', 'Administration', 'test', 'Test', 'write');
-    },
-    '0.5.0' => function () {
+    '0.1.0' => function () {
         @addNewACL('Imaging technician', 'imaging_technician', 'write', 'Things that imaging technician can modify');
         @addNewACL('Imaging technician', 'imaging_technician', 'view', 'Things that imaging technician can read but not modify');
         @addNewACL('Imaging doctor', 'imaging_doctor', 'write', 'Things that imaging doctor can modify');
