@@ -6,7 +6,6 @@ return $ACL_UPGRADE = array(
     '0.2.0' => function () {
         //addObjectAcl('admin', 'Administration', 'test', 'Test');
         //updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'admin', 'Administration', 'test', 'Test', 'write');
-
     },
     '0.5.0' => function () {
         @addNewACL('Imaging technician', 'imaging_technician', 'write', 'Things that imaging technician can modify');
@@ -18,5 +17,4 @@ return $ACL_UPGRADE = array(
         @addNewACL('Imaging call center representative', 'imaging_call_center_representative', 'write', 'Things that imaging call center representative can modify');
         @addNewACL('Imaging call center representative', 'imaging_call_center_representative', 'view', 'Things that imaging call center representative can read but not modify');
     },
-
 );
