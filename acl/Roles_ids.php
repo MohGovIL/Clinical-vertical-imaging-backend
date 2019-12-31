@@ -21,9 +21,20 @@ class Roles_ids{
                 'application_manager_write' => getAclIdNumber('Application Manager', 'write'),
                 'application_manager_view' => getAclIdNumber('Application Manager', 'view'),
                 //EXAMPLE
-                'receptionist_write' => getAclIdNumber('Vaccine receptionists', 'write'),
-                'receptionist_view' => getAclIdNumber('Vaccine receptionists', 'view'),
+                'imaging_receptionist_write' => getAclIdNumber('Imaging receptionist', 'write'),
+                'imaging_receptionist_view' => getAclIdNumber('Imaging receptionist', 'view'),
 
+                'imaging_technician_write' => getAclIdNumber('Imaging technician', 'write'),
+                'imaging_technician_view' => getAclIdNumber('Imaging technician', 'view'),
+
+                'imaging_doctor_write' => getAclIdNumber('Imaging doctor', 'write'),
+                'imaging_doctor_view' => getAclIdNumber('Imaging doctor', 'view'),
+
+                'imaging_clinic_manager_write' => getAclIdNumber('Imaging clinic manager', 'write'),
+                'imaging_clinic_manager_view' => getAclIdNumber('Imaging clinic manager', 'view'),
+
+                'imaging_call_center_representative_write' => getAclIdNumber('Imaging call center representative', 'write'),
+                'imaging_call_center_representative_view' => getAclIdNumber('Imaging call center representative', 'view'),
             );
             return self::$instance;
 
