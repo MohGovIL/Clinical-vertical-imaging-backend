@@ -4,10 +4,11 @@
         "label": "Patients",
         "menu_id": "patients",
         "url": "",
-        "children": [],
+        "children": [
+        ],
         "acl_req": [
-            "patients",
-            "pat_rep"
+            "",
+            ""
         ],
         "global_req": 0
     },
@@ -32,7 +33,7 @@
             ""
         ],
         "global_req": 0
-    },
+    }
 
 ]
 
