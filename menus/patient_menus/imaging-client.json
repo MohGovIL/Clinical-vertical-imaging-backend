@@ -1,0 +1,41 @@
+[
+
+    {
+        "label": "Patients",
+        "menu_id": "patients",
+        "url": "",
+        "children": [
+        ],
+        "acl_req": [
+            "",
+            ""
+        ],
+        "global_req": 0
+    },
+    {
+        "label": "Calendar",
+        "menu_id": "calendar",
+        "url": "",
+        "children": [],
+        "acl_req": [
+            "",
+            ""
+        ],
+        "global_req": 0
+    },
+    {
+        "label": "Tasks",
+        "menu_id": "tasks",
+        "url": "",
+        "children": [],
+        "acl_req": [
+            "",
+            ""
+        ],
+        "global_req": 0
+    }
+
+]
+
+
+
