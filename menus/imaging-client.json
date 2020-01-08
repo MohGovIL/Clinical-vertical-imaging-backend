@@ -3,7 +3,7 @@
     {
         "label": "Patients",
         "menu_id": "patients",
-        "url": "",
+        "url": "/PatientTraking",
         "children": [
         ],
         "acl_req": [
@@ -15,7 +15,7 @@
     {
         "label": "Calendar",
         "menu_id": "calendar",
-        "url": "",
+        "url": "/Calendar",
         "children": [],
         "acl_req": [
             "",
@@ -26,7 +26,7 @@
     {
         "label": "Tasks",
         "menu_id": "tasks",
-        "url": "",
+        "url": "/Tasks",
         "children": [],
         "acl_req": [
             "",
