@@ -20,3 +20,19 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('apptstat', 'noshow',          'No Show',     60, 0, 0, '', 'FFC9F8|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18'),
 ('apptstat', 'waitlist',        'Waitlisted',  15, 0, 0, '', '87FF1F|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18');
 
+CREATE TABLE `healthcare_services` (
+	`identifier` INT NOT NULL AUTO_INCREMENT,
+    `active` BOOLEAN NOT NULL DEFAULT 1,
+    `providedby` INT NOT NULL,
+    `category` INT NOT NULL,
+    `type` INT NOT NULL,
+    `name` VARCHAR(125) NOT NULL,
+    `comment` TEXT,
+    `extradetails` TEXT,
+    `availabletime` JSON,
+    `notavailable` JSON,
+    `availabilityexceptions` TEXT,
+    CONSTRAINT time_json CHECK (Json_valid(`availabletime`)),
+    CONSTRAINT tn_avlbl_json CHECK (Json_valid(`notavailable`)),
+    PRIMARY KEY (`identifier`)
+) ENGINE = innodb;
