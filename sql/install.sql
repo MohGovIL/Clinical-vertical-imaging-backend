@@ -21,7 +21,7 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('apptstat', 'waitlist',        'Waitlisted',  15, 0, 0, '', '87FF1F|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18');
 
 CREATE TABLE `healthcare_services` (
-	`identifier` INT NOT NULL AUTO_INCREMENT,
+    `identifier` INT NOT NULL AUTO_INCREMENT,
     `active` BOOLEAN NOT NULL DEFAULT 1,
     `providedby` INT NOT NULL,
     `category` INT NOT NULL,
