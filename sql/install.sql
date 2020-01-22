@@ -23,16 +23,16 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 CREATE TABLE `healthcare_services` (
     `identifier` INT NOT NULL AUTO_INCREMENT,
     `active` BOOLEAN NOT NULL DEFAULT 1,
-    `providedby` INT NOT NULL,
+    `providedBy` INT NOT NULL,
     `category` INT NOT NULL,
     `type` INT NOT NULL,
     `name` VARCHAR(125) NOT NULL,
     `comment` TEXT,
-    `extradetails` TEXT,
-    `availabletime` JSON,
-    `notavailable` JSON,
-    `availabilityexceptions` TEXT,
-    CONSTRAINT time_json CHECK (Json_valid(`availabletime`)),
-    CONSTRAINT tn_avlbl_json CHECK (Json_valid(`notavailable`)),
+    `extraDetails` TEXT,
+    `availableTime` JSON,
+    `notAvailable` JSON,
+    `availabilityExceptions` TEXT,
+    CONSTRAINT time_json CHECK (Json_valid(`availableTime`)),
+    CONSTRAINT tn_avlbl_json CHECK (Json_valid(`notAvailable`)),
     PRIMARY KEY (`identifier`)
 ) ENGINE = innodb;
