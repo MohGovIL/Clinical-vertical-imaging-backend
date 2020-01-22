@@ -20,3 +20,15 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('apptstat', 'noshow',          'No Show',     60, 0, 0, '', 'FFC9F8|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18'),
 ('apptstat', 'waitlist',        'Waitlisted',  15, 0, 0, '', '87FF1F|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18');
 
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
+('lists', 'fhir_service_categories', 'FHIR Service Categories', 0, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1),
+('fhir_service_categories', '30', 'Specialist Radiology/Imaging', 10, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1);
+
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
+('lists', 'clinikal_service_types', 'Clinikal Service Types', 0, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1),
+('clinikal_service_types', '1', 'Ultrasound', 10, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1),
+('clinikal_service_types', '2', 'Mammography', 20, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1),
+('clinikal_service_types', '3', 'X-ray', 30, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1),
+('clinikal_service_types', '4', 'CT', 40, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1),
+('clinikal_service_types', '5', 'MRI', 50, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1),
+('clinikal_service_types', '6', 'Cardiology', 60, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1);
