@@ -35,7 +35,7 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('apptstat', 'waitlist',        'Waitlisted',  15, 0, 0, '', '87FF1F|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18');
 
 CREATE TABLE `healthcare_services` (
-    `identifier` INT NOT NULL AUTO_INCREMENT,
+    `id` INT NOT NULL AUTO_INCREMENT,
     `active` BOOLEAN NOT NULL DEFAULT 1,
     `providedBy` INT NOT NULL,
     `category` INT NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `healthcare_services` (
     `availabilityExceptions` TEXT,
     CONSTRAINT time_json CHECK (Json_valid(`availableTime`)),
     CONSTRAINT tn_avlbl_json CHECK (Json_valid(`notAvailable`)),
-    PRIMARY KEY (`identifier`)
+    PRIMARY KEY (`id`)
 ) ENGINE = innodb;
 
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
