@@ -19,7 +19,7 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 
 
 
-
+-- ----------------------------------------------------------------------------FHIR ----------------------------------------------------------------------
 
 -- Genric queries for fhir api - new tables and generic data
 
@@ -54,3 +54,23 @@ CREATE TABLE `healthcare_services` (
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'fhir_service_categories', 'FHIR Service Categories', 0, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1),
 ('fhir_service_categories', '30', 'Specialist Radiology/Imaging', 10, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1);
+
+
+-- fhir routing rest api builders table
+
+ CREATE TABLE `fhir_rest_elements` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `active` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `fhir_rest_elements`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `fhir_rest_elements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
+(1, 'Facility', 1);
+
+-- --------------------------------------------------------------------------END OF FHIR -------------------------------------------------------------
