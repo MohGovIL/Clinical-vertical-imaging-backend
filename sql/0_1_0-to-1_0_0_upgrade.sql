@@ -109,5 +109,5 @@ ALTER TABLE `fhir_rest_elements`
 
 #IfNotRow fhir_rest_elements name Facility
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(1, 'Facility', 1);
+(1, 'Organization', 1);
 #EndIf
