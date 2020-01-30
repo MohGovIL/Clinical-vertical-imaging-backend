@@ -22,7 +22,7 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 
 
 -- Generic queries for fhir api - new tables and generic data
-ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NOT NULL AFTER `parent_encounter_id`, ADD `eid` INT NOT NULL;
+ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL;
 -- Appointment statuses from Fhir
 
 DELETE FROM list_options  WHERE `list_id` = 'apptstat';
