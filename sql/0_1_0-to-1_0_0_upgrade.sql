@@ -123,3 +123,10 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 (3, 'Appointment', 1);
 #EndIf
 
+#IfNotTable fhir_healthcare_services
+RENAME TABLE `healthcare_services` TO `fhir_healthcare_services`;
+#EndIf
+
+#IfMissingColumn fhir_healthcare_services id
+ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUTO_INCREMENT;
+#EndIf
