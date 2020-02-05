@@ -107,7 +107,12 @@ ALTER TABLE `fhir_rest_elements`
 
 #EndIf
 
-#IfNotRow fhir_rest_elements name Facility
+#IfNotRow fhir_rest_elements name Organization
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 (1, 'Organization', 1);
+#EndIf
+
+#IfNotRow fhir_rest_elements name HealthcareService
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
+(2, 'HealthcareService', 1);
 #EndIf

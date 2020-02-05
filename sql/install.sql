@@ -71,6 +71,7 @@ ALTER TABLE `fhir_rest_elements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(1, 'Organization', 1);
+(1, 'Organization', 1),
+(2, 'HealthcareService', 1);
 
 -- --------------------------------------------------------------------------END OF FHIR -------------------------------------------------------------
