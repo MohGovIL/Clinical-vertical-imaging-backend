@@ -21,9 +21,9 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 
 -- ----------------------------------------------------------------------------FHIR ----------------------------------------------------------------------
 
--- Genric queries for fhir api - new tables and generic data
-
--- Appiontment statuses from Fhir
+-- Generic queries for fhir api - new tables and generic data
+ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL;
+-- Appointment statuses from Fhir
 
 DELETE FROM list_options  WHERE `list_id` = 'apptstat';
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`, `timestamp`) VALUES
