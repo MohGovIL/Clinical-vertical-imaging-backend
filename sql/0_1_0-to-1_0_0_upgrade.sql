@@ -104,7 +104,6 @@ ALTER TABLE `fhir_rest_elements`
 
 ALTER TABLE `fhir_rest_elements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 #EndIf
 
 #IfNotRow fhir_rest_elements name Organization
@@ -112,15 +111,19 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 (1, 'Organization', 1);
 #EndIf
 
+#IfNotRow fhir_rest_elements name HealthcareService
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
+(2, 'HealthcareService', 1);
+#EndIf
 
 #IfNotRow fhir_rest_elements name Patient
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(2, 'Patient', 1);
+(3, 'Patient', 1);
 #EndIf
 
 #IfNotRow fhir_rest_elements name Appointment
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(3, 'Appointment', 1);
+(4, 'Appointment', 1);
 #EndIf
 
 #IfNotTable fhir_healthcare_services
