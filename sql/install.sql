@@ -34,7 +34,7 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('apptstat', 'noshow',          'No Show',     60, 0, 0, '', 'FFC9F8|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18'),
 ('apptstat', 'waitlist',        'Waitlisted',  15, 0, 0, '', '87FF1F|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18');
 
-CREATE TABLE `healthcare_services` (
+CREATE TABLE `fhir_healthcare_services` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `active` BOOLEAN NOT NULL DEFAULT 1,
     `providedBy` INT NOT NULL,
