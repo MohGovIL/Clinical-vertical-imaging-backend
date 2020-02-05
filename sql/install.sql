@@ -72,8 +72,8 @@ ALTER TABLE `fhir_rest_elements`
 
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 (1, 'Organization', 1),
-(2, 'HealthcareService', 1),
-(3, 'Patient', 1),
-(4, 'Appointment', 1);
+(2, 'Patient', 1),
+(3, 'Appointment', 1),
+(4, 'HealthcareService', 1);
 
 -- --------------------------------------------------------------------------END OF FHIR -------------------------------------------------------------
