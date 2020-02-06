@@ -133,3 +133,8 @@ RENAME TABLE `healthcare_services` TO `fhir_healthcare_services`;
 #IfMissingColumn fhir_healthcare_services id
 ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUTO_INCREMENT;
 #EndIf
+
+#IfMissingColumn facility active
+ALTER TABLE facility
+ADD active varchar(5);
+#EndIf
