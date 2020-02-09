@@ -133,3 +133,16 @@ RENAME TABLE `healthcare_services` TO `fhir_healthcare_services`;
 #IfMissingColumn fhir_healthcare_services id
 ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUTO_INCREMENT;
 #EndIf
+
+
+#IfMissingColumn openemr_postcalendar_events pc_priority
+ALTER TABLE `openemr_postcalendar_events` ADD `pc_priority` INT NOT NULL DEFAULT '0' AFTER `pc_gid`;
+#EndIf
+
+#IfMissingColumn openemr_postcalendar_events pc_service_type
+ALTER TABLE `openemr_postcalendar_events` ADD `pc_service_type` INT NULL DEFAULT NULL AFTER `pc_priority`;
+#EndIf
+
+#IfMissingColumn openemr_postcalendar_events pc_healthcare_service_id
+ALTER TABLE `openemr_postcalendar_events` ADD `pc_healthcare_service_id` INT NULL DEFAULT NULL AFTER `pc_service_type`;
+#EndIf
