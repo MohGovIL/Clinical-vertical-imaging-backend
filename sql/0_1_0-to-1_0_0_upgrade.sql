@@ -136,5 +136,5 @@ ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUT
 
 #IfMissingColumn facility active
 ALTER TABLE facility
-ADD active varchar(5);
+ADD active int DEFAULT 1;
 #EndIf

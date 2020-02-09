@@ -77,5 +77,5 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 (4, 'HealthcareService', 1);
 
 ALTER TABLE facility
-ADD active varchar(5);
+ADD active int DEFAULT 1;
 -- --------------------------------------------------------------------------END OF FHIR -------------------------------------------------------------
