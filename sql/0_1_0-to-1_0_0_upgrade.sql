@@ -153,3 +153,13 @@ CREATE TABLE `event_codeReason_map` (
   `option_id` varchar(100) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 #EndIf
+
+#IfMissingColumn facility active
+ALTER TABLE facility ADD active int DEFAULT 1;
+#EndIf
+
+-- Example for Eyal
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
+('lists', 'clinikal_reason_code', 'Clinikal Reason code', 0, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1),
+('clinikal_reason_code', '1', 'shoulder', 10, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1),
+('clinikal_reason_code', '2', 'ankle', 20, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1);
