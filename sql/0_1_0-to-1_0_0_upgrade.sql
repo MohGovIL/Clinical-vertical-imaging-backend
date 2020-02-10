@@ -134,6 +134,11 @@ RENAME TABLE `healthcare_services` TO `fhir_healthcare_services`;
 ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUTO_INCREMENT;
 #EndIf
 
+#IfMissingColumn facility active
+ALTER TABLE facility
+ADD active int DEFAULT 1;
+#EndIf
+
 -- Example for Eyal
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'clinikal_reason_code', 'Clinikal Reason code', 0, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1),
