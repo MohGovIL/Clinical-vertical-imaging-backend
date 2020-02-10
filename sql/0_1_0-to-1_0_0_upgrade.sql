@@ -135,8 +135,7 @@ ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUT
 #EndIf
 
 #IfMissingColumn facility active
-ALTER TABLE facility
-ADD active int DEFAULT 1;
+ALTER TABLE facility ADD active int DEFAULT 1;
 #EndIf
 
 -- Example for Eyal
