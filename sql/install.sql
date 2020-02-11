@@ -79,3 +79,25 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 ALTER TABLE facility
 ADD active int DEFAULT 1;
 -- --------------------------------------------------------------------------END OF FHIR -------------------------------------------------------------
+
+CREATE TABLE `fhir_value_sets` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(125) NOT NULL,
+    `active` BOOLEAN NOT NULL DEFAULT 1,
+    PRIMARY KEY(`id`)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE `fhir_value_set_systems` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `vs_id` INT NOT NULL,
+    `system` VARCHAR(125) NOT NULL,
+    `type` ENUM('All', 'Partial', 'Exclude', 'Filter') NOT NULL,
+    `filter` VARCHAR(125),
+    PRIMARY KEY(`id`)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE `fhir_value_set_codes` (
+    `vs_id` INT NOT NULL,
+    `code` VARCHAR(125) NOT NULL,
+    PRIMARY KEY(`vs_id`)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;

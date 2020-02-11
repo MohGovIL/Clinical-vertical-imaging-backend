@@ -143,3 +143,31 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('lists', 'clinikal_reason_code', 'Clinikal Reason code', 0, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1),
 ('clinikal_reason_code', '1', 'shoulder', 10, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1),
 ('clinikal_reason_code', '2', 'ankle', 20, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1);
+
+#IfNotTable fhir_value_sets
+CREATE TABLE `fhir_value_sets` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(125) NOT NULL,
+    `active` BOOLEAN NOT NULL DEFAULT 1,
+    PRIMARY KEY(`id`)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+#EndIf
+
+#IfNotTable fhir_value_set_systems
+CREATE TABLE `fhir_value_set_systems` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `vs_id` INT NOT NULL,
+    `system` VARCHAR(125) NOT NULL,
+    `type` ENUM('All', 'Partial', 'Exclude', 'Filter') NOT NULL,
+    `filter` VARCHAR(125),
+    PRIMARY KEY(`id`)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+#EndIf
+
+#IfNotTable fhir_value_set_codes
+CREATE TABLE `fhir_value_set_codes` (
+    `vs_id` INT NOT NULL,
+    `code` VARCHAR(125) NOT NULL,
+    PRIMARY KEY(`vs_id`)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
+#EndIf
