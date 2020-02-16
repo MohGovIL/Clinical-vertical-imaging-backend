@@ -329,3 +329,10 @@ INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
 (LAST_INSERT_ID(), 4),
 (LAST_INSERT_ID(), 5);
 #EndIf
+
+-- no appropriate condition
+UPDATE `list_options` SET `list_id` = 'clinikal_service_categories' WHERE list_id = 'fhir_service_categories';
+
+-- no appropriate condition
+UPDATE `list_options` SET `option_id` = 'clinikal_service_categories' WHERE option_id = 'fhir_service_categories';
+
