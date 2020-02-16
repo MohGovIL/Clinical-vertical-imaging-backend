@@ -165,3 +165,10 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('clinikal_reason_code', '1', 'shoulder', 10, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1),
 ('clinikal_reason_code', '2', 'ankle', 20, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1);
 #EndIf
+
+-- no appropriate condition
+UPDATE `list_options` SET `list_id` = 'clinikal_service_categories' WHERE list_id = 'fhir_service_categories';
+
+-- no appropriate condition
+UPDATE `list_options` SET `option_id` = 'clinikal_service_categories' WHERE option_id = 'fhir_service_categories';
+
