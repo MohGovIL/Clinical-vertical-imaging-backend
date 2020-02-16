@@ -52,8 +52,8 @@ CREATE TABLE `fhir_healthcare_services` (
 ) ENGINE = innodb;
 
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
-('lists', 'fhir_service_categories', 'FHIR Service Categories', 0, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1),
-('fhir_service_categories', '30', 'Specialist Radiology/Imaging', 10, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1);
+('lists', 'clinikal_service_categories', 'FHIR Service Categories', 0, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1),
+('clinikal_service_categories', '30', 'Specialist Radiology/Imaging', 10, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1);
 
 
 -- fhir routing rest api builders table
