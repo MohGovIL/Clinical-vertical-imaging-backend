@@ -79,3 +79,14 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 ALTER TABLE facility
 ADD active int DEFAULT 1;
 -- --------------------------------------------------------------------------END OF FHIR -------------------------------------------------------------
+
+ALTER TABLE `openemr_postcalendar_events`
+ADD `pc_priority` INT NOT NULL DEFAULT '0' AFTER `pc_gid`,
+ADD `pc_service_type` INT NULL DEFAULT NULL AFTER `pc_priority`,
+ADD `pc_healthcare_service_id` INT NULL DEFAULT NULL AFTER `pc_service_type`;
+
+
+CREATE TABLE `event_codeReason_map` (
+  `event_id` int(11) NOT NULL,
+  `option_id` varchar(100) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
