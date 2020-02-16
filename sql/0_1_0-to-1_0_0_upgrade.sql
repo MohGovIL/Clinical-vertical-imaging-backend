@@ -187,12 +187,6 @@ CREATE TABLE `fhir_value_set_codes` (
 #EndIf
 
 -- no appropriate condition
-UPDATE `list_options` SET `list_id` = 'clinikal_service_categories' WHERE list_id = 'fhir_service_categories';
-
--- no appropriate condition
-UPDATE `list_options` SET `option_id` = 'clinikal_service_categories' WHERE option_id = 'fhir_service_categories';
-
--- no appropriate condition
 UPDATE `list_options` SET `notes` = ''
     WHERE `list_id` IN ('clinikal_service_categories', 'clinikal_service_types') OR `option_id` IN ('clinikal_service_categories', 'clinikal_service_types');
 
