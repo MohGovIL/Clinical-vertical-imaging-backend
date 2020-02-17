@@ -179,23 +179,19 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 #EndIf
 
 #IfMissingColumn form_encounter status
-ALTER TABLE form_encounter
-ADD status VARCHAR(100) NULL  AFTER `parent_encounter_id`;
+ALTER TABLE form_encounter ADD status VARCHAR(100) NULL  AFTER `parent_encounter_id`;
 #EndIf
 
 #IfMissingColumn form_encounter eid
-ALTER TABLE form_encounter
-ADD eid INT NULL  AFTER `status`;
+ALTER TABLE form_encounter ADD eid INT NULL  AFTER `status`;
 #EndIf
 
 #IfMissingColumn form_encounter priority
-ALTER TABLE form_encounter
-ADD priority INT DEFAULT 0  AFTER `status`;
+ALTER TABLE form_encounter ADD priority INT DEFAULT 0 AFTER `eid`;
 #EndIf
 
 #IfMissingColumn form_encounter service_type
-ALTER TABLE form_encounter
-ADD service_type INT DEFAULT NULL  AFTER `priority`;
+ALTER TABLE form_encounter ADD service_type INT DEFAULT NULL  AFTER `priority`;
 #EndIf
 
 
