@@ -92,7 +92,6 @@
 
 
 #IfNotTable fhir_rest_elements
-
  CREATE TABLE `fhir_rest_elements` (
   `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
@@ -158,6 +157,7 @@ CREATE TABLE `event_codeReason_map` (
 ALTER TABLE facility ADD active int DEFAULT 1;
 #EndIf
 
+
 -- Example for Eyal
 #IfNotRow2D list_options list_id lists option_id clinikal_reason_code
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
@@ -172,3 +172,36 @@ UPDATE `list_options` SET `list_id` = 'clinikal_service_categories' WHERE list_i
 -- no appropriate condition
 UPDATE `list_options` SET `option_id` = 'clinikal_service_categories' WHERE option_id = 'fhir_service_categories';
 
+
+#IfNotRow fhir_rest_elements name Encounter
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
+(5, 'Encounter', 1);
+#EndIf
+
+#IfMissingColumn form_encounter status
+ALTER TABLE form_encounter
+ADD status VARCHAR(100) NULL  AFTER `parent_encounter_id`;
+#EndIf
+
+#IfMissingColumn form_encounter eid
+ALTER TABLE form_encounter
+ADD eid INT NULL  AFTER `status`;
+#EndIf
+
+#IfMissingColumn form_encounter priority
+ALTER TABLE form_encounter
+ADD priority INT DEFAULT 0  AFTER `status`;
+#EndIf
+
+#IfMissingColumn form_encounter service_type
+ALTER TABLE form_encounter
+ADD service_type INT DEFAULT NULL  AFTER `priority`;
+#EndIf
+
+
+#IfNotTable encounter_reasoncode_map
+CREATE TABLE encounter_reasoncode_map (
+event_id INT(6),
+option_id  INT(6) UNSIGNED
+);
+#EndIf
