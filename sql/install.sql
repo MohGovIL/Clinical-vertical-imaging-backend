@@ -14,7 +14,8 @@ INSERT INTO `modules` (`mod_id`, `mod_name`, `mod_directory`, `mod_parent`, `mod
 -- ----------------------------------------------------------------------------FHIR ----------------------------------------------------------------------
 
 -- Generic queries for fhir api - new tables and generic data
-ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL;
+ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL AFTER `status`, ADD `priority` INT DEFAULT 0 AFTER `status`, ADD `service_type` INT DEFAULT NULL AFTER `priority`;
+
 -- Appointment statuses from Fhir
 
 DELETE FROM list_options  WHERE `list_id` = 'apptstat';
@@ -64,10 +65,17 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 (2, 'Patient', 1),
 (3, 'Appointment', 1),
 (4, 'HealthcareService', 1),
-(5, 'ValueSet', 1);
+(5, 'ValueSet', 1),
+(6, 'Encounter', 1);
 
 ALTER TABLE facility
 ADD active int DEFAULT 1;
+
+CREATE TABLE encounter_reasoncode_map (
+eid INT(6) UNSIGNED,
+reason_code  INT(6) UNSIGNED
+);
+
 -- --------------------------------------------------------------------------END OF FHIR -------------------------------------------------------------
 
 CREATE TABLE `fhir_value_sets` (
