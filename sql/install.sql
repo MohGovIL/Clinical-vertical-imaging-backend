@@ -22,7 +22,7 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 -- ----------------------------------------------------------------------------FHIR ----------------------------------------------------------------------
 
 -- Generic queries for fhir api - new tables and generic data
-ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL AFTER `status`, ADD `priority` INT DEFAULT 0 AFTER `status`, ADD `service_type` INT DEFAULT NULL AFTER `priority`;
+ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL AFTER `status`, ADD `priority` INT DEFAULT 1 AFTER `status`, ADD `service_type` INT DEFAULT NULL AFTER `priority`;
 
 -- Appointment statuses from Fhir
 
@@ -89,7 +89,7 @@ reason_code  INT(6) UNSIGNED
 -- --------------------------------------------------------------------------END OF FHIR -------------------------------------------------------------
 
 ALTER TABLE `openemr_postcalendar_events`
-ADD `pc_priority` INT NOT NULL DEFAULT '0' AFTER `pc_gid`,
+ADD `pc_priority` INT NOT NULL DEFAULT '1' AFTER `pc_gid`,
 ADD `pc_service_type` INT NULL DEFAULT NULL AFTER `pc_priority`,
 ADD `pc_healthcare_service_id` INT NULL DEFAULT NULL AFTER `pc_service_type`;
 

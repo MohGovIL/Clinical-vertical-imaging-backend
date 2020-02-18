@@ -18,16 +18,16 @@
 //api/settings/menu/imaging-client
 //api/translation/7
 //api/settings/menu
-require_once(dirname(__FILE__) . "/../../interface/globals.php");
+require_once(dirname(__FILE__) . "/../../../../interface/globals.php");
 
 use OpenEMR\Common\Csrf\CsrfUtils;
 ?>
 <html>
 <head>
-    <script src="../../public/assets/jquery/dist/jquery.min.js"></script>
+    <script src="../../../../public/assets/jquery/dist/jquery.min.js"></script>
 
 
-    <script language="JavaScript">
+    <script>
 
         urlsToRun =[
           "/apis/fhir/v4/Encounter",
@@ -50,7 +50,8 @@ use OpenEMR\Common\Csrf\CsrfUtils;
             "/apis/fhir/v4/Organization?_id=4",
             "/apis/fhir/v4/Organization?_id=3&active=1",
             "/apis/fhir/v4/Organization?name=אשק",
-            "/apis/fhir/v4/Patient"
+            "/apis/fhir/v4/Patient",
+            "/apis/fhir/v4/Appointment"
 
 
         ];
@@ -60,13 +61,13 @@ use OpenEMR\Common\Csrf\CsrfUtils;
            urlsToRun.forEach(function(value,index,array){
             $.ajax({
                 type: 'GET',
-                url: '../../'+value,
+                url: '../../../../'+value,
                 dataType: 'json',
                 headers: {
                     'apicsrftoken': <?php echo js_escape(CsrfUtils::collectCsrfToken('api')); ?>
                 },
                 success: function(thedata){
-                    let thedataJSON = JSON.stringify(thedata);
+                    let thedataJSON = JSON.stringify(thedata, null, 2);
                     $("#ajaxapi").html($("#ajaxapi").html()+"<br/><b><u>"+value+"</u></b><br/>"+thedataJSON+"<br/>");
                 },
                 error:function(e){

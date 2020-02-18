@@ -135,7 +135,7 @@ ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUT
 
 
 #IfMissingColumn openemr_postcalendar_events pc_priority
-ALTER TABLE `openemr_postcalendar_events` ADD `pc_priority` INT NOT NULL DEFAULT '0' AFTER `pc_gid`;
+ALTER TABLE `openemr_postcalendar_events` ADD `pc_priority` INT NOT NULL DEFAULT '1' AFTER `pc_gid`;
 #EndIf
 
 #IfMissingColumn openemr_postcalendar_events pc_service_type
@@ -201,3 +201,6 @@ event_id INT(6),
 option_id  INT(6) UNSIGNED
 );
 #EndIf
+
+ALTER TABLE form_encounter MODIFY COLUMN priority INT DEFAULT 1;
+ALTER TABLE `openemr_postcalendar_events` MODIFY COLUMN `pc_priority` INT NOT NULL DEFAULT 1;
