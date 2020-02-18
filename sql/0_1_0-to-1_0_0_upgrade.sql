@@ -336,3 +336,7 @@ UPDATE `list_options` SET `list_id` = 'clinikal_service_categories' WHERE list_i
 -- no appropriate condition
 UPDATE `list_options` SET `option_id` = 'clinikal_service_categories' WHERE option_id = 'fhir_service_categories';
 
+#IfNotRow fhir_rest_elements name ValueSet
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
+(5, 'ValueSet', 1);
+#EndIf

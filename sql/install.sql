@@ -63,7 +63,8 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
 (1, 'Organization', 1),
 (2, 'Patient', 1),
 (3, 'Appointment', 1),
-(4, 'HealthcareService', 1);
+(4, 'HealthcareService', 1),
+(5, 'ValueSet', 1);
 
 ALTER TABLE facility
 ADD active int DEFAULT 1;
