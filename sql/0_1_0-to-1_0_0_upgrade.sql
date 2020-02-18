@@ -106,23 +106,23 @@ ALTER TABLE `fhir_rest_elements`
 #EndIf
 
 #IfNotRow fhir_rest_elements name Organization
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(1, 'Organization', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Organization', 1);
 #EndIf
 
 #IfNotRow fhir_rest_elements name Patient
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(2, 'Patient', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Patient', 1);
 #EndIf
 
 #IfNotRow fhir_rest_elements name Appointment
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(3, 'Appointment', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Appointment', 1);
 #EndIf
 
 #IfNotRow fhir_rest_elements name HealthcareService
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(4, 'HealthcareService', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('HealthcareService', 1);
 #EndIf
 
 #IfNotTable fhir_healthcare_services
@@ -204,3 +204,5 @@ option_id  INT(6) UNSIGNED
 
 ALTER TABLE form_encounter MODIFY COLUMN priority INT DEFAULT 1;
 ALTER TABLE `openemr_postcalendar_events` MODIFY COLUMN `pc_priority` INT NOT NULL DEFAULT 1;
+ALTER TABLE `fhir_rest_elements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

@@ -71,12 +71,12 @@ ALTER TABLE `fhir_rest_elements`
 ALTER TABLE `fhir_rest_elements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(1, 'Organization', 1),
-(2, 'Patient', 1),
-(3, 'Appointment', 1),
-(4, 'HealthcareService', 1),
-(5, 'Encounter', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Organization', 1),
+('Patient', 1),
+('Appointment', 1),
+('HealthcareService', 1),
+('Encounter', 1);
 
 ALTER TABLE facility
 ADD active int DEFAULT 1;
