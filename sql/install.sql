@@ -14,7 +14,7 @@ INSERT INTO `modules` (`mod_id`, `mod_name`, `mod_directory`, `mod_parent`, `mod
 -- ----------------------------------------------------------------------------FHIR ----------------------------------------------------------------------
 
 -- Generic queries for fhir api - new tables and generic data
-ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL AFTER `status`, ADD `priority` INT DEFAULT 0 AFTER `status`, ADD `service_type` INT DEFAULT NULL AFTER `priority`;
+ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL AFTER `status`, ADD `priority` INT DEFAULT 1 AFTER `status`, ADD `service_type` INT DEFAULT NULL AFTER `priority`;
 
 -- Appointment statuses from Fhir
 
@@ -60,13 +60,13 @@ ALTER TABLE `fhir_rest_elements`
 ALTER TABLE `fhir_rest_elements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(1, 'Organization', 1),
-(2, 'Patient', 1),
-(3, 'Appointment', 1),
-(4, 'HealthcareService', 1),
-(5, 'ValueSet', 1),
-(6, 'Encounter', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Organization', 1),
+('Patient', 1),
+('Appointment', 1),
+('HealthcareService', 1),
+('Encounter', 1),
+('ValueSet', 1);
 
 ALTER TABLE facility
 ADD active int DEFAULT 1;
@@ -191,7 +191,7 @@ INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
 (LAST_INSERT_ID(), 5);
 
 ALTER TABLE `openemr_postcalendar_events`
-ADD `pc_priority` INT NOT NULL DEFAULT '0' AFTER `pc_gid`,
+ADD `pc_priority` INT NOT NULL DEFAULT '1' AFTER `pc_gid`,
 ADD `pc_service_type` INT NULL DEFAULT NULL AFTER `pc_priority`,
 ADD `pc_healthcare_service_id` INT NULL DEFAULT NULL AFTER `pc_service_type`;
 

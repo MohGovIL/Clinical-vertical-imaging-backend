@@ -106,23 +106,23 @@ ALTER TABLE `fhir_rest_elements`
 #EndIf
 
 #IfNotRow fhir_rest_elements name Organization
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(1, 'Organization', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Organization', 1);
 #EndIf
 
 #IfNotRow fhir_rest_elements name Patient
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(2, 'Patient', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Patient', 1);
 #EndIf
 
 #IfNotRow fhir_rest_elements name Appointment
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(3, 'Appointment', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Appointment', 1);
 #EndIf
 
 #IfNotRow fhir_rest_elements name HealthcareService
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(4, 'HealthcareService', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('HealthcareService', 1);
 #EndIf
 
 #IfNotTable fhir_healthcare_services
@@ -135,7 +135,7 @@ ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUT
 
 
 #IfMissingColumn openemr_postcalendar_events pc_priority
-ALTER TABLE `openemr_postcalendar_events` ADD `pc_priority` INT NOT NULL DEFAULT '0' AFTER `pc_gid`;
+ALTER TABLE `openemr_postcalendar_events` ADD `pc_priority` INT NOT NULL DEFAULT '1' AFTER `pc_gid`;
 #EndIf
 
 #IfMissingColumn openemr_postcalendar_events pc_service_type
@@ -336,13 +336,13 @@ UPDATE `list_options` SET `list_id` = 'clinikal_service_categories' WHERE list_i
 UPDATE `list_options` SET `option_id` = 'clinikal_service_categories' WHERE option_id = 'fhir_service_categories';
 
 #IfNotRow fhir_rest_elements name ValueSet
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(5, 'ValueSet', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('ValueSet', 1);
 #EndIf
 
 #IfNotRow fhir_rest_elements name Encounter
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES
-(5, 'Encounter', 1);
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('Encounter', 1);
 #EndIf
 
 #IfMissingColumn form_encounter status
@@ -368,3 +368,8 @@ event_id INT(6),
 option_id  INT(6) UNSIGNED
 );
 #EndIf
+
+ALTER TABLE form_encounter MODIFY COLUMN priority INT DEFAULT 1;
+ALTER TABLE `openemr_postcalendar_events` MODIFY COLUMN `pc_priority` INT NOT NULL DEFAULT 1;
+ALTER TABLE `fhir_rest_elements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
