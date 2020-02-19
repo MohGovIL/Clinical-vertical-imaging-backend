@@ -22,7 +22,7 @@ return $ACL_UPGRADE = array(
         addObjectAcl('client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished');
         addObjectAcl('client_app', 'Client Application', 'PatientAdmission','Patient Admission');
         addObjectAcl('client_app', 'Client Application', 'AddPatient','Add Patient');
-        addObjectAcl('client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments & Encounters');
+        addObjectAcl('client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters');
         addObjectAcl('client_app', 'Client Application', 'EncounterSheet','Encounter Sheet');
         addObjectAcl('client_app', 'Client Application', 'SuperUser','Super User');
 
@@ -37,7 +37,7 @@ return $ACL_UPGRADE = array(
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished', 'write');
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'client_app', 'Client Application', 'PatientAdmission','Patient Admission', 'write');
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
-        updateAcl(Roles_ids::instance()->admin_view , 'Administrators', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments & Encounters', 'view');
+        updateAcl(Roles_ids::instance()->admin_view , 'Administrators', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');*/
 
 
@@ -48,7 +48,7 @@ return $ACL_UPGRADE = array(
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'PatientAdmission','Patient Admission', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
-        updateAcl(Roles_ids::instance()->imaging_clinic_manager_view,  'Imaging receptionist', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments & Encounters', 'view');
+        updateAcl(Roles_ids::instance()->imaging_clinic_manager_view,  'Imaging receptionist', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
 
         //Clinic manager ACL
@@ -58,7 +58,7 @@ return $ACL_UPGRADE = array(
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging clinic manager', 'client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished', 'write');
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging clinic manager', 'client_app', 'Client Application', 'PatientAdmission','Patient Admission', 'write');
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging clinic manager', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
-        updateAcl(Roles_ids::instance()->imaging_clinic_manager_view,  'Imaging clinic manager', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments & Encounters', 'view');
+        updateAcl(Roles_ids::instance()->imaging_clinic_manager_view,  'Imaging clinic manager', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging clinic manager', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
 
         //Clinic manager ACL
@@ -68,7 +68,7 @@ return $ACL_UPGRADE = array(
         //updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging Technician', 'client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished', 'write');
         //updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging Technician', 'client_app', 'Client Application', 'PatientAdmission','Patient Admission', 'write');
         //updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging Technician', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
-        updateAcl(Roles_ids::instance()->imaging_technician_view,  'Imaging Technician', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments & Encounters', 'view');
+        updateAcl(Roles_ids::instance()->imaging_technician_view,  'Imaging Technician', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
         updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging Technician', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
 
         //Doctor ACL
@@ -78,7 +78,7 @@ return $ACL_UPGRADE = array(
         updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished', 'write');
         //updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'client_app', 'Client Application', 'PatientAdmission','Patient Admission', 'write');
         //updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
-        updateAcl(Roles_ids::instance()->imaging_doctor_view,  'Imaging doctor', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments & Encounters', 'view');
+        updateAcl(Roles_ids::instance()->imaging_doctor_view,  'Imaging doctor', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
         updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
 
         //Clinic manager ACL
@@ -88,7 +88,7 @@ return $ACL_UPGRADE = array(
         //updateAcl(Roles_ids::instance()->imaging_call_center_representative_write, 'Imaging call center representative', 'client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished', 'write');
         //updateAcl(Roles_ids::instance()->imaging_call_center_representative_write, 'Imaging call center representative', 'client_app', 'Client Application', 'PatientAdmission','Patient Admission', 'write');
         updateAcl(Roles_ids::instance()->imaging_call_center_representative_write, 'Imaging call center representative', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
-        updateAcl(Roles_ids::instance()->imaging_call_center_representative_view,  'Imaging call center representative', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments & Encounters', 'view');
+        updateAcl(Roles_ids::instance()->imaging_call_center_representative_view,  'Imaging call center representative', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
         //updateAcl(Roles_ids::instance()->imaging_call_center_representative_write, 'Imaging call center representative', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
 
   }
