@@ -49,7 +49,7 @@ return $ACL_UPGRADE = array(
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'PatientAdmission','Patient Admission', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
-        updateAcl(Roles_ids::instance()->imaging_clinic_manager_view,  'Imaging receptionist', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
+        updateAcl(Roles_ids::instance()->imaging_receptionist_view,  'Imaging receptionist', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
 
         //Clinic manager ACL
