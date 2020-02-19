@@ -200,3 +200,5 @@ CREATE TABLE `event_codeReason_map` (
   `event_id` int(11) NOT NULL,
   `option_id` varchar(100) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
