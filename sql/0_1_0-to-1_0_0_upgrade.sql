@@ -373,3 +373,5 @@ ALTER TABLE form_encounter MODIFY COLUMN priority INT DEFAULT 1;
 ALTER TABLE `openemr_postcalendar_events` MODIFY COLUMN `pc_priority` INT NOT NULL DEFAULT 1;
 ALTER TABLE `fhir_rest_elements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `fhir_value_sets` CHANGE `active` `status` ENUM('active', 'retired') NOT NULL DEFAULT 'active';

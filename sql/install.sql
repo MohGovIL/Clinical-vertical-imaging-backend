@@ -81,7 +81,7 @@ reason_code  INT(6) UNSIGNED
 CREATE TABLE `fhir_value_sets` (
     `id` VARCHAR(125) NOT NULL,
     `title` VARCHAR(125) NOT NULL,
-    `active` BOOLEAN NOT NULL DEFAULT 1,
+    `status` ENUM('active', 'retired') NOT NULL DEFAULT 'active',
     PRIMARY KEY(`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
