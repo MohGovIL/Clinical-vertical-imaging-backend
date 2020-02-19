@@ -172,3 +172,6 @@ UPDATE `list_options` SET `list_id` = 'clinikal_service_categories' WHERE list_i
 -- no appropriate condition
 UPDATE `list_options` SET `option_id` = 'clinikal_service_categories' WHERE option_id = 'fhir_service_categories';
 
+#IfRow2D globals gl_name vertical_version gl_value develop
+UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
+#EndIf
