@@ -16,17 +16,6 @@ INSERT INTO `modules` (`mod_id`, `mod_name`, `mod_directory`, `mod_parent`, `mod
 -- Generic queries for fhir api - new tables and generic data
 ALTER TABLE `form_encounter` ADD `status` VARCHAR(100) NULL AFTER `parent_encounter_id`, ADD `eid` INT NULL AFTER `status`, ADD `priority` INT DEFAULT 1 AFTER `status`, ADD `service_type` INT DEFAULT NULL AFTER `priority`;
 
--- Appointment statuses from Fhir
-
-DELETE FROM list_options  WHERE `list_id` = 'apptstat';
-INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`, `timestamp`) VALUES
-('apptstat', 'pending',         'Pending',     20, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18'),
-('apptstat', 'booked',          'Booked',      45, 0, 0, '', 'FFFF2B|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18'),
-('apptstat', 'arrived',         'Arrived',     80, 0, 0, '', 'C0FF96|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18'),
-('apptstat', 'cancelled',       'Cancelled',   65, 0, 0, '', 'BFBFBF|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18'),
-('apptstat', 'noshow',          'No Show',     60, 0, 0, '', 'FFC9F8|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18'),
-('apptstat', 'waitlist',        'Waitlisted',  15, 0, 0, '', '87FF1F|0', '', 0, 0, 1, '', 1, '2017-03-09 07:22:18');
-
 CREATE TABLE `fhir_healthcare_services` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `active` BOOLEAN NOT NULL DEFAULT 1,
