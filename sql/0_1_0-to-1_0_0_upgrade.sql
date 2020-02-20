@@ -390,7 +390,7 @@ ALTER TABLE `fhir_healthcare_services` CHANGE
 `providedBy` `providedBy` INT NULL DEFAULT NULL COMMENT 'facility.id';
 
 -- no appropriate condition
-UPDATE `clinikal_app_statuses` SET `title` = 'Pending Approval' WHERE `option_id` = 1;
+UPDATE `list_options` SET `title` = 'Pending Approval' WHERE `list_id` = 'clinikal_app_statuses' AND `option_id` = 1;
 
 -- no appropriate condition
-UPDATE `clinikal_enc_statuses` SET `title` = 'Admitted' WHERE `option_id` = 2;
+UPDATE `list_options` SET `title` = 'Admitted' WHERE `list_id` = 'clinikal_enc_statuses' AND `option_id` = 2;
