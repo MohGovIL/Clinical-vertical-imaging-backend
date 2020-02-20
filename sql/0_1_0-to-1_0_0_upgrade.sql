@@ -383,7 +383,6 @@ CREATE TABLE `event_codeReason_map` (
 ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
 #EndIf
 
-
 #IfTable event_codeReason_map
 ALTER TABLE event_codeReason_map DROP PRIMARY KEY;
 ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
