@@ -371,8 +371,6 @@ option_id  INT(6) UNSIGNED
 
 ALTER TABLE form_encounter MODIFY COLUMN priority INT DEFAULT 1;
 ALTER TABLE `openemr_postcalendar_events` MODIFY COLUMN `pc_priority` INT NOT NULL DEFAULT 1;
-ALTER TABLE `fhir_rest_elements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 #IfNotTable event_codeReason_map
 CREATE TABLE `event_codeReason_map` (
@@ -380,11 +378,6 @@ CREATE TABLE `event_codeReason_map` (
   `option_id` varchar(100) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
-#EndIf
-
-#IfTable event_codeReason_map
-ALTER TABLE event_codeReason_map DROP PRIMARY KEY;
 ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
 #EndIf
 
