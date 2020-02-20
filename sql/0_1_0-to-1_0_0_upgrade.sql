@@ -381,7 +381,9 @@ CREATE TABLE `event_codeReason_map` (
 ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
 #EndIf
 
+#IfColumn fhir_value_sets active
 ALTER TABLE `fhir_value_sets` CHANGE `active` `status` ENUM('active', 'retired') NOT NULL DEFAULT 'active';
+#EndIf
 
 ALTER TABLE `openemr_postcalendar_events` CHANGE
 `pc_healthcare_service_id` `pc_healthcare_service_id` INT NULL DEFAULT NULL COMMENT 'fhir_healthcare_services.id';
