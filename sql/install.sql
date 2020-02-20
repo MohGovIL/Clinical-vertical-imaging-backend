@@ -149,7 +149,7 @@ INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUE
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'clinikal_enc_statuses', 'Clinikal Encounter Statuses', 0, 0, 0, '', '', '', 0, 0, 1, '', 1),
 ('clinikal_enc_statuses', '1', 'Planned', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_enc_statuses', '2', 'Arrived', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', '2', 'Admitted', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
 ('clinikal_enc_statuses', '3', 'Triaged', 30, 0, 0, '', '', '', 0, 0, 1, '', 1),
 ('clinikal_enc_statuses', '4', 'In Progress', 40, 0, 0, '', '', '', 0, 0, 1, '', 1),
 ('clinikal_enc_statuses', '5', 'Waiting For Results', 50, 0, 0, '', '', '', 0, 0, 1, '', 1),
@@ -161,7 +161,7 @@ INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('encoun
 
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'clinikal_app_statuses', 'Clinikal Appointment Statuses', 0, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_app_statuses', '1', 'Pending', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', '1', 'Pending Approval', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
 ('clinikal_app_statuses', '2', 'Booked', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
 ('clinikal_app_statuses', '3', 'Arrived', 30, 0, 0, '', '', '', 0, 0, 1, '', 1),
 ('clinikal_app_statuses', '4', 'Cancelled', 40, 0, 0, '', '', '', 0, 0, 1, '', 1),
