@@ -100,3 +100,10 @@ CREATE TABLE `event_codeReason_map` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
+
+ALTER TABLE `openemr_postcalendar_events` CHANGE
+`pc_healthcare_service_id` `pc_healthcare_service_id` INT NULL DEFAULT NULL COMMENT 'fhir_healthcare_services.id';
+
+
+ALTER TABLE `fhir_healthcare_services` CHANGE
+`providedBy` `providedBy` INT NULL DEFAULT NULL COMMENT 'facility.id';
