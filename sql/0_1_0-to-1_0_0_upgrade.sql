@@ -381,7 +381,6 @@ CREATE TABLE `event_codeReason_map` (
 ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
 #EndIf
 
-
 #IfTable event_codeReason_map
 ALTER TABLE event_codeReason_map DROP PRIMARY KEY;
 ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
@@ -394,3 +393,9 @@ ALTER TABLE `openemr_postcalendar_events` CHANGE
 
 ALTER TABLE `fhir_healthcare_services` CHANGE
 `providedBy` `providedBy` INT NULL DEFAULT NULL COMMENT 'facility.id';
+
+-- no appropriate condition
+UPDATE `clinikal_app_statuses` SET `title` = 'Pending Approval' WHERE `option_id` = 1;
+
+-- no appropriate condition
+UPDATE `clinikal_enc_statuses` SET `title` = 'Admitted' WHERE `option_id` = 2;
