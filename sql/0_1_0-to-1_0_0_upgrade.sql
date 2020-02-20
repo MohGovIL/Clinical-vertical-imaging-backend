@@ -374,7 +374,25 @@ ALTER TABLE `openemr_postcalendar_events` MODIFY COLUMN `pc_priority` INT NOT NU
 ALTER TABLE `fhir_rest_elements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+#IfNotTable event_codeReason_map
+CREATE TABLE `event_codeReason_map` (
+  `event_id` int(11) NOT NULL,
+  `option_id` varchar(100) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
+#EndIf
+
+
+#IfTable event_codeReason_map
 ALTER TABLE event_codeReason_map DROP PRIMARY KEY;
 ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
+#EndIf
 
 ALTER TABLE `fhir_value_sets` CHANGE `active` `status` ENUM('active', 'retired') NOT NULL DEFAULT 'active';
+
+ALTER TABLE `openemr_postcalendar_events` CHANGE
+`pc_healthcare_service_id` `pc_healthcare_service_id` INT NULL DEFAULT NULL COMMENT 'fhir_healthcare_services.id';
+
+ALTER TABLE `fhir_healthcare_services` CHANGE
+`providedBy` `providedBy` INT NULL DEFAULT NULL COMMENT 'facility.id';
