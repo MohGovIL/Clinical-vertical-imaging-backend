@@ -396,3 +396,54 @@ UPDATE `list_options` SET `title` = 'Pending Approval' WHERE `list_id` = 'clinik
 
 -- no appropriate condition
 UPDATE `list_options` SET `title` = 'Admitted' WHERE `list_id` = 'clinikal_enc_statuses' AND `option_id` = 2;
+
+
+
+-- FIX FOR APP AND ENCOUNTER STATUS IDS:
+
+-- no appropriate condition
+UPDATE `fhir_value_set_codes` AS `a`
+JOIN `fhir_value_set_systems` AS `b` ON `a`.`vss_id` = `b`.`id`
+SET `a`.`code` = 'pending'
+WHERE `b`.`vs_id` = 'patient_tracking_statuses' AND `b`.`system` = 'clinikal_app_statuses' AND `b`.`type` = 'Partial' AND `a`.`code` = '1';
+
+-- no appropriate condition
+UPDATE `fhir_value_set_codes` AS `a`
+JOIN `fhir_value_set_systems` AS `b` ON `a`.`vss_id` = `b`.`id`
+SET `a`.`code` = 'booked'
+WHERE `b`.`vs_id` = 'patient_tracking_statuses' AND `b`.`system` = 'clinikal_app_statuses' AND `b`.`type` = 'Partial' AND `a`.`code` = '2';
+
+-- no appropriate condition
+UPDATE `fhir_value_set_codes` AS `a`
+JOIN `fhir_value_set_systems` AS `b` ON `a`.`vss_id` = `b`.`id`
+SET `a`.`code` = 'cancelled'
+WHERE `b`.`vs_id` = 'patient_tracking_statuses' AND `b`.`system` = 'clinikal_app_statuses' AND `b`.`type` = 'Partial' AND `a`.`code` = '4';
+
+-- no appropriate condition
+UPDATE `fhir_value_set_codes` AS `a`
+JOIN `fhir_value_set_systems` AS `b` ON `a`.`vss_id` = `b`.`id`
+SET `a`.`code` = 'noshow'
+WHERE `b`.`vs_id` = 'patient_tracking_statuses' AND `b`.`system` = 'clinikal_app_statuses' AND `b`.`type` = 'Partial' AND `a`.`code` = '5';
+
+#IfNotRow2D list_options list_id clinikal_enc_statuses option_id planned
+DELETE FROM `list_options` WHERE `list_id` = 'clinikal_enc_statuses';
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
+('clinikal_enc_statuses', 'planned', 'Planned', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'arrived', 'Admitted', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'triaged', 'Triaged', 30, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'in-progress', 'In Progress', 40, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'waiting-for-results', 'Waiting For Results', 50, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'finished', 'Finished', 60, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'cancelled', 'Cancelled', 15, 0, 0, '', '', '', 0, 0, 1, '', 1);
+#EndIf
+
+#IfNotRow2D list_options list_id clinikal_app_statuses option_id pending
+DELETE FROM `list_options` WHERE `list_id` = 'clinikal_app_statuses';
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
+('clinikal_app_statuses', 'pending', 'Pending Approval', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'booked', 'Booked', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'arrived', 'Arrived', 30, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'cancelled', 'Cancelled', 40, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'noshow', 'No Show', 50, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'waitlist', 'Waitlisted', 60, 0, 0, '', '', '', 0, 0, 1, '', 1);
+#EndIf
