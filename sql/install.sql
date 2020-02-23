@@ -148,25 +148,25 @@ INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUE
 
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'clinikal_enc_statuses', 'Clinikal Encounter Statuses', 0, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_enc_statuses', '1', 'Planned', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_enc_statuses', '2', 'Admitted', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_enc_statuses', '3', 'Triaged', 30, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_enc_statuses', '4', 'In Progress', 40, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_enc_statuses', '5', 'Waiting For Results', 50, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_enc_statuses', '6', 'Finished', 60, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_enc_statuses', '7', 'Cancelled', 15, 0, 0, '', '', '', 0, 0, 1, '', 1);
+('clinikal_enc_statuses', 'planned', 'Planned', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'arrived', 'Admitted', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'triaged', 'Triaged', 30, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'in-progress', 'In Progress', 40, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'waiting-for-results', 'Waiting For Results', 50, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'finished', 'Finished', 60, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_enc_statuses', 'cancelled', 'Cancelled', 15, 0, 0, '', '', '', 0, 0, 1, '', 1);
 
 INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('encounter_statuses', 'Encounter Statuses');
 INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('encounter_statuses', 'clinikal_enc_statuses', 'All');
 
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'clinikal_app_statuses', 'Clinikal Appointment Statuses', 0, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_app_statuses', '1', 'Pending Approval', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_app_statuses', '2', 'Booked', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_app_statuses', '3', 'Arrived', 30, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_app_statuses', '4', 'Cancelled', 40, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_app_statuses', '5', 'No Show', 50, 0, 0, '', '', '', 0, 0, 1, '', 1),
-('clinikal_app_statuses', '6', 'Waitlisted', 60, 0, 0, '', '', '', 0, 0, 1, '', 1);
+('clinikal_app_statuses', 'pending', 'Pending Approval', 10, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'booked', 'Booked', 20, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'arrived', 'Arrived', 30, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'cancelled', 'Cancelled', 40, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'noshow', 'No Show', 50, 0, 0, '', '', '', 0, 0, 1, '', 1),
+('clinikal_app_statuses', 'waitlist', 'Waitlisted', 60, 0, 0, '', '', '', 0, 0, 1, '', 1);
 
 INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('appointment_statuses', 'Appointment Statuses');
 INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('appointment_statuses', 'clinikal_app_statuses', 'All');
@@ -174,10 +174,10 @@ INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('appoin
 INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('patient_tracking_statuses', 'Appointment Statuses For Patients Tracking');
 INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('patient_tracking_statuses', 'clinikal_app_statuses', 'Partial');
 INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
-(LAST_INSERT_ID(), 1),
-(LAST_INSERT_ID(), 2),
-(LAST_INSERT_ID(), 4),
-(LAST_INSERT_ID(), 5);
+(LAST_INSERT_ID(), 'pending'),
+(LAST_INSERT_ID(), 'booked'),
+(LAST_INSERT_ID(), 'cancelled'),
+(LAST_INSERT_ID(), 'noshow');
 
 ALTER TABLE `openemr_postcalendar_events`
 ADD `pc_priority` INT NOT NULL DEFAULT '1' AFTER `pc_gid`,
