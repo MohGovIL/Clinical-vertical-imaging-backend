@@ -30,11 +30,11 @@ class Roles_ids{
                 'imaging_doctor_write' => getAclIdNumber('Imaging doctor', 'write'),
                 'imaging_doctor_view' => getAclIdNumber('Imaging doctor', 'view'),
 
-                'imaging_clinic_manager_write' => getAclIdNumber('Imaging clinic manager', 'write'),
-                'imaging_clinic_manager_view' => getAclIdNumber('Imaging clinic manager', 'view'),
+                'imaging_clinic_manager_write' => getAclIdNumber('Imaging manager', 'write'),
+                'imaging_clinic_manager_view' => getAclIdNumber('Imaging manager', 'view'),
 
-                'imaging_call_center_representative_write' => getAclIdNumber('Imaging call center representative', 'write'),
-                'imaging_call_center_representative_view' => getAclIdNumber('Imaging call center representative', 'view'),
+                'imaging_call_center_representative_write' => getAclIdNumber('Imaging representative', 'write'),
+                'imaging_call_center_representative_view' => getAclIdNumber('Imaging representative', 'view'),
             );
             return self::$instance;
 
