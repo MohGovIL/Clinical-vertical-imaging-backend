@@ -424,6 +424,17 @@ UPDATE `fhir_value_set_codes` AS `a`
 JOIN `fhir_value_set_systems` AS `b` ON `a`.`vss_id` = `b`.`id`
 SET `a`.`code` = 'noshow'
 WHERE `b`.`vs_id` = 'patient_tracking_statuses' AND `b`.`system` = 'clinikal_app_statuses' AND `b`.`type` = 'Partial' AND `a`.`code` = '5';
+#IfRow2D globals gl_name vertical_version gl_value develop
+UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
+#EndIf
+
+#IfRow2D gacl_aro_groups value imaging_call_center_representative name Imaging call center representative
+UPDATE gacl_aro_groups SET name = 'Imaging representative' WHERE value = 'imaging_call_center_representative';
+#EndIf
+
+#IfRow2D gacl_aro_groups value imaging_clinic_manager name Imaging clinic manager
+UPDATE gacl_aro_groups SET name = 'Imaging manager' WHERE value = 'imaging_clinic_manager';
+#EndIf
 
 #IfNotRow2D list_options list_id clinikal_enc_statuses option_id planned
 DELETE FROM `list_options` WHERE `list_id` = 'clinikal_enc_statuses';
