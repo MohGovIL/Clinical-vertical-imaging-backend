@@ -71,22 +71,25 @@ use OpenEMR\Common\Csrf\CsrfUtils;
         ];
 
         function output(inp,count) {
-            debugger;
             var temp =(document.createElement('pre'));
             temp.innerHTML = inp;
             if(typeof (count)!=undefined) {
                 temp.id = "pre_" + counter;
-                $("#"+temp.id).on("click",function(){
-                    debugger;
-                    $("#pre_"+counter).toggle();
-                });
-                counter++;
+
+
             }
             else{
                 temp.id = "pre_" + counter++;
             }
 
             $("#answer").append(temp);
+            $("#"+temp.id).on("click",function(){
+                var id = Number(this.id.split("_")[1])+1;
+                $("#pre_"+id).slideToggle( "slow", function() {
+                    // Animation complete.
+                });
+            });
+            counter++;
         }
         function syntaxHighlight(json) {
             json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
