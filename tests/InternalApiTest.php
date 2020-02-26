@@ -18,21 +18,32 @@
 //api/settings/menu/imaging-client
 //api/translation/7
 //api/settings/menu
-require_once(dirname(__FILE__) . "/../../../../interface/globals.php");
+require_once(dirname(__FILE__) . "/../../interface/globals.php");
 
 use OpenEMR\Common\Csrf\CsrfUtils;
 ?>
 <html>
 <head>
-    <script src="../../../../public/assets/jquery/dist/jquery.min.js"></script>
+    <style>
+        pre {outline: 1px solid #89b7cc; padding: 5px; margin: 5px; }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+
+    </style>
+    <script src="../../public/assets/jquery/dist/jquery.min.js"></script>
 
 
-    <script>
+    <script language="JavaScript">
 
         urlsToRun =[
-          "/apis/fhir/v4/Encounter",
-          "/apis/fhir/v4/Encounter/1",
+            "/apis/fhir/v4/Encounter",
+            "/apis/fhir/v4/Encounter/1",
             "/apis/fhir/v4/Encounter?_id=1",
+            "/apis/fhir/v4/Encounter?_id=1&status=planned&status=in progress",
+            "/apis/fhir/v4/Encounter?_id=2&status=planned&status=in progress",
             "/apis/fhir/v4/Encounter?_id=8&status=planned&status=in progress",
             "/apis/fhir/v4/Encounter?appointment=1&patient=2",
             "/apis/fhir/v4/Encounter?appointment=2&patient=3",
@@ -51,35 +62,93 @@ use OpenEMR\Common\Csrf\CsrfUtils;
             "/apis/fhir/v4/Organization?_id=3&active=1",
             "/apis/fhir/v4/Organization?name=אשק",
             "/apis/fhir/v4/Patient",
-            "/apis/fhir/v4/Appointment"
+            "/apis/fhir/v4//Encounter?date=gt2020-02-04&_sort=date&status=arrived&status=triaged&status=in-progress&_include=Encounter:patient"
+
+
+
 
 
         ];
 
+        function output(inp,count) {
+            debugger;
+            var temp =(document.createElement('pre'));
+            temp.innerHTML = inp;
+            if(typeof (count)!=undefined) {
+                temp.id = "pre_" + counter;
+                $("#"+temp.id).on("click",function(){
+                    debugger;
+                    $("#pre_"+counter).toggle();
+                });
+                counter++;
+            }
+            else{
+                temp.id = "pre_" + counter++;
+            }
+
+            $("#answer").append(temp);
+        }
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
 
         function testAjaxApi() {
-           urlsToRun.forEach(function(value,index,array){
-            $.ajax({
-                type: 'GET',
-                url: '../../../../'+value,
-                dataType: 'json',
-                headers: {
-                    'apicsrftoken': <?php echo js_escape(CsrfUtils::collectCsrfToken('api')); ?>
-                },
-                success: function(thedata){
-                    let thedataJSON = JSON.stringify(thedata, null, 2);
-                    $("#ajaxapi").html($("#ajaxapi").html()+"<br/><b><u>"+value+"</u></b><br/>"+thedataJSON+"<br/>");
-                },
-                error:function(e){
-                    $("#ajaxapi").html($("#ajaxapi").html()+e);
-                }
+            counter = 0;
+            urlsToRun.forEach(function(value,index,array){
+                $.ajax({
+                    type: 'GET',
+                    url: '../../'+value,
+                    dataType: 'json',
+                    headers: {
+                        'apicsrftoken': <?php echo js_escape(CsrfUtils::collectCsrfToken('api')); ?>
+                    },
+                    success: function(thedata){
+
+                        output(value,counter);
+                        output(syntaxHighlight(JSON.stringify(thedata, undefined, 4)));
+
+
+                        /* let thedataJSON = JSON.stringify(thedata);
+                         thedataJSON = JSON.stringify(thedataJSON, null, 2);
+                         $("#ajaxapi").html($("#ajaxapi").html()+"<br/><b style='font-size: 24px;'><u>"+value+"</u></b><br/>"+thedataJSON+"<br/>");*/
+                    },
+                    error:function(e){
+                        output(value,counter);
+                        output(JSON.stringify({'responseText':e.responseText,'status':e.status,'ststusText':e.statusText}));
+                        output("refresh page");
+
+                    }
+                });
             });
-           });
         }
 
 
         $(document).ready(function(){
             testAjaxApi();
+
+
+
+            $("#runAPI").on("click",function(){
+                $("#answer").html("");
+                urlsToRun = [$("#url").val()];
+                testAjaxApi();
+            });
+
         });
     </script>
 
@@ -92,8 +161,8 @@ use OpenEMR\Common\Csrf\CsrfUtils;
 //  See above testAjaxApi() function for details.
 echo "<pre>";
 echo "<b>local jquery ajax call:</b><br>";
-echo "<div id='ajaxapi'></div>";
-echo "<br><br>";
+echo "<div id='ajaxapi'> <textArea style='width:80%' id='url' value='' placeholder='enter your call here'></textArea>        <button id='runAPI'>run api</button> </div>";
+echo "<br><br> <div id='answer'></div>";
 
 ?>
 </html>
