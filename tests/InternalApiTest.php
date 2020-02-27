@@ -83,12 +83,32 @@ use OpenEMR\Common\Csrf\CsrfUtils;
             }
 
             $("#answer").append(temp);
+
+            if(counter%2==0){
+                $("#"+temp.id).append("<div style='float:right;font-weight: bold;font-size: 16px' id='pre_"+counter+"_hide'>-</div><div style='float:right;font-weight: bold;font-size: 16px'  id='pre_"+counter+"_show'>+</div>")
+            }
             $("#"+temp.id).on("click",function(){
                 var id = Number(this.id.split("_")[1])+1;
-                $("#pre_"+id).slideToggle( "slow", function() {
-                    // Animation complete.
-                });
+                if(id%2 != 0)
+                {
+                    $("#pre_"+(id-1)+'_hide').show();
+                    $("#pre_"+(id-1)+'_show').hide();
+
+                    $("#pre_"+id).slideToggle( "slow", function() {
+                        if( !$("#pre_"+id).is(":hidden") ){
+                            $("#pre_"+(id-1)+'_hide').show();
+                            $("#pre_"+(id-1)+'_show').hide();
+                        }else{
+
+                            $("#pre_" + (id - 1) + '_show').show();
+                            $("#pre_" + (id - 1) + '_hide').hide();
+
+                        }
+                    });
+                }
+                // Animation complete.
             });
+            $("#"+temp.id).trigger('click');
             counter++;
         }
         function syntaxHighlight(json) {
