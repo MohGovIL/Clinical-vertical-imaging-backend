@@ -151,6 +151,15 @@ use OpenEMR\Common\Csrf\CsrfUtils;
                          $("#ajaxapi").html($("#ajaxapi").html()+"<br/><b style='font-size: 24px;'><u>"+value+"</u></b><br/>"+thedataJSON+"<br/>");*/
                     },
                     error:function(e){
+                        if(value=="")
+                        {
+                            value= "No url value was selected";
+                            output(value,counter);
+                            $("#pre_"+(counter-1)+'_hide').hide();
+                            $("#pre_"+(counter-1)+'_show').hide();
+                            return;
+
+                        }
                         output(value,counter);
                         output(JSON.stringify({'responseText':e.responseText,'status':e.status,'ststusText':e.statusText}));
                         output("refresh page");
