@@ -451,3 +451,8 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 #IfRow2D globals gl_name vertical_version gl_value develop
 UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
 #EndIf
+
+#IfNotRow fhir_rest_elements name DocumentReference
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('DocumentReference', 1);
+#EndIf
