@@ -198,3 +198,17 @@ ALTER TABLE `openemr_postcalendar_events` CHANGE
 
 ALTER TABLE `fhir_healthcare_services` CHANGE
 `providedBy` `providedBy` INT NULL DEFAULT NULL COMMENT 'facility.id';
+
+CREATE TABLE `related_person` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'form_encounter.escort_id',
+  `identifier` varchar(255) DEFAULT NULL,
+  `identifier_type` varchar(255) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 0,
+  `pid` bigint(20) NOT NULL,
+  `relationship` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `mobile` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
