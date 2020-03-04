@@ -206,3 +206,9 @@ VALUES
 ('2', 'hmo_2', NULL, NULL, NULL, NULL, NULL, NULL, '972', NULL, NULL, NULL, '1', '0', '0', NULL, NULL, NULL, NULL, NULL, '', '', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'), (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#99BFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
 ('3', 'hmo_3', NULL, NULL, NULL, NULL, NULL, NULL, '972', NULL, NULL, NULL, '1', '0', '0', NULL, NULL, NULL, NULL, NULL, '', '', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'), (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#99CFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
 ('4', 'hmo_4', NULL, NULL, NULL, NULL, NULL, NULL, '972', NULL, NULL, NULL, '1', '0', '0', NULL, NULL, NULL, NULL, NULL, '', '', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'), (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#99FDFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1');
+
+UPDATE `list_options` SET `option_id` = '1' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_1';
+UPDATE `list_options` SET `option_id` = '2' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_2';
+UPDATE `list_options` SET `option_id` = '3' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_3';
+UPDATE `list_options` SET `option_id` = '4' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_4';
+
