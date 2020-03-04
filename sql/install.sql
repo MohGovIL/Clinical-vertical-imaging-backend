@@ -212,3 +212,5 @@ CREATE TABLE `related_person` (
   `gender` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES (NULL, 'RelatedPerson', '1');

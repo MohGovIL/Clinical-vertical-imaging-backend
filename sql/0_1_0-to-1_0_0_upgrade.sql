@@ -478,3 +478,9 @@ CREATE TABLE `related_person` (
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 #EndIf
+
+#IfNotRow fhir_rest_elements name RelatedPerson
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`)
+VALUES
+(NULL, 'RelatedPerson', '1');
+#EndIf
