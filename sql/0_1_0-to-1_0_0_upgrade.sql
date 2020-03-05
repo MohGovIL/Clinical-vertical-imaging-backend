@@ -471,8 +471,8 @@ CREATE TABLE `related_person` (
   `active` tinyint(1) NOT NULL DEFAULT 0,
   `pid` bigint(20) NOT NULL,
   `relationship` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `mobile` varchar(255) DEFAULT NULL,
+  `phone_home` varchar(255) DEFAULT NULL,
+  `phone_cell` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
    PRIMARY KEY (`id`)
@@ -483,4 +483,8 @@ CREATE TABLE `related_person` (
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`)
 VALUES
 (NULL, 'RelatedPerson', '1');
+#EndIf
+
+#IfMissingColumn form_encounter escort_id
+ALTER TABLE `form_encounter` ADD `escort_id` BIGINT(20) NULL DEFAULT NULL AFTER `service_type`;
 #EndIf
