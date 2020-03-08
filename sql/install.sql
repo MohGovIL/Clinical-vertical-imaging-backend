@@ -200,7 +200,7 @@ ALTER TABLE `fhir_healthcare_services` CHANGE
 `providedBy` `providedBy` INT NULL DEFAULT NULL COMMENT 'facility.id';
 
 CREATE TABLE `related_person` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'form_encounter.escort_id',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(255) DEFAULT NULL,
   `identifier_type` varchar(255) DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 0,
@@ -215,4 +215,4 @@ CREATE TABLE `related_person` (
 
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES (NULL, 'RelatedPerson', '1');
 
-ALTER TABLE `form_encounter` ADD `escort_id` BIGINT(20) NULL DEFAULT NULL AFTER `service_type`;
+ALTER TABLE `form_encounter` ADD `escort_id` BIGINT(20) NULL DEFAULT NULL COMMENT 'related_person.id' AFTER `service_type`;

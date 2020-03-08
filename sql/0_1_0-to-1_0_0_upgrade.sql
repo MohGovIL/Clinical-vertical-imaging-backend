@@ -465,7 +465,7 @@ UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
 
 #IfNotTable related_person
 CREATE TABLE `related_person` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'form_encounter.escort_id',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(255) DEFAULT NULL,
   `identifier_type` varchar(255) DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 0,
@@ -486,5 +486,5 @@ VALUES
 #EndIf
 
 #IfMissingColumn form_encounter escort_id
-ALTER TABLE `form_encounter` ADD `escort_id` BIGINT(20) NULL DEFAULT NULL AFTER `service_type`;
+ALTER TABLE `form_encounter` ADD `escort_id` BIGINT(20) NULL DEFAULT NULL  COMMENT 'related_person.id' AFTER `service_type`;
 #EndIf
