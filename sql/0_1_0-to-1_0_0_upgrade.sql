@@ -424,6 +424,17 @@ UPDATE `fhir_value_set_codes` AS `a`
 JOIN `fhir_value_set_systems` AS `b` ON `a`.`vss_id` = `b`.`id`
 SET `a`.`code` = 'noshow'
 WHERE `b`.`vs_id` = 'patient_tracking_statuses' AND `b`.`system` = 'clinikal_app_statuses' AND `b`.`type` = 'Partial' AND `a`.`code` = '5';
+#IfRow2D globals gl_name vertical_version gl_value develop
+UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
+#EndIf
+
+#IfRow2D gacl_aro_groups value imaging_call_center_representative name Imaging call center representative
+UPDATE gacl_aro_groups SET name = 'Imaging representative' WHERE value = 'imaging_call_center_representative';
+#EndIf
+
+#IfRow2D gacl_aro_groups value imaging_clinic_manager name Imaging clinic manager
+UPDATE gacl_aro_groups SET name = 'Imaging manager' WHERE value = 'imaging_clinic_manager';
+#EndIf
 
 #IfNotRow2D list_options list_id clinikal_enc_statuses option_id planned
 DELETE FROM `list_options` WHERE `list_id` = 'clinikal_enc_statuses';
@@ -455,4 +466,31 @@ UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
 #IfNotRow fhir_rest_elements name DocumentReference
 INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
 ('DocumentReference', 1);
+#EndIf
+
+
+#IfNotTable related_person
+CREATE TABLE `related_person` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(255) DEFAULT NULL,
+  `identifier_type` varchar(255) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 0,
+  `pid` bigint(20) NOT NULL,
+  `relationship` varchar(255) DEFAULT NULL,
+  `phone_home` varchar(255) DEFAULT NULL,
+  `phone_cell` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+#EndIf
+
+#IfNotRow fhir_rest_elements name RelatedPerson
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`)
+VALUES
+(NULL, 'RelatedPerson', '1');
+#EndIf
+
+#IfMissingColumn form_encounter escort_id
+ALTER TABLE `form_encounter` ADD `escort_id` BIGINT(20) NULL DEFAULT NULL  COMMENT 'related_person.id' AFTER `service_type`;
 #EndIf
