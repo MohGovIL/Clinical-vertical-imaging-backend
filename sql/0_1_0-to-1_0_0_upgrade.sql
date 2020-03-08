@@ -463,6 +463,12 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
 #EndIf
 
+#IfNotRow fhir_rest_elements name DocumentReference
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
+('DocumentReference', 1);
+#EndIf
+
+
 #IfNotTable related_person
 CREATE TABLE `related_person` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
