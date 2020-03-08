@@ -463,7 +463,7 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
 #EndIf
 
-#IfNotTable fhir_rest_elements
+#IfNotTable related_person
 CREATE TABLE `related_person` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'form_encounter.escort_id',
   `identifier` varchar(255) DEFAULT NULL,
