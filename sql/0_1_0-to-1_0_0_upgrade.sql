@@ -480,9 +480,9 @@ CREATE TABLE `related_person` (
 #EndIf
 
 #IfNotRow fhir_rest_elements name RelatedPerson
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`)
+INSERT INTO `fhir_rest_elements` (`name`, `active`)
 VALUES
-(NULL, 'RelatedPerson', '1');
+('RelatedPerson', '1');
 #EndIf
 
 #IfMissingColumn form_encounter escort_id
