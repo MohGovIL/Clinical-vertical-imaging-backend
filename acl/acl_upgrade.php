@@ -93,5 +93,17 @@ return $ACL_UPGRADE = array(
         updateAcl(Roles_ids::instance()->imaging_call_center_representative_view,  'Imaging representative', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
         //updateAcl(Roles_ids::instance()->imaging_call_center_representative_write, 'Imaging representative', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
 
+
+        addObjectSectionAcl('fhir_api', 'FHIR API');
+        addObjectAcl('fhir_api', 'FHIR API', 'patient','Patient');
+        addObjectAcl('fhir_api', 'FHIR API', 'appointment','Appointment');
+        addObjectAcl('fhir_api', 'FHIR API', 'encounter','Encounter');
+        addObjectAcl('fhir_api', 'FHIR API', 'practitioner','Practitioner');
+        addObjectAcl('fhir_api', 'FHIR API', 'organization','Organization');
+        addObjectAcl('fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service');
+        addObjectAcl('fhir_api', 'FHIR API', 'valueset','Value Set');
+        addObjectAcl('fhir_api', 'FHIR API', 'relatedperson','Related Person');
+        addObjectAcl('fhir_api', 'FHIR API', 'documentreference','Document Reference');
+        
   }
 );
