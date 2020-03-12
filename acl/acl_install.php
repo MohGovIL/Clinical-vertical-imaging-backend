@@ -98,13 +98,6 @@ updateAcl(Roles_ids::instance()->imaging_call_center_representative_view,  'Imag
 //updateAcl($receptionist_write, 'Vaccine receptionists', 'patients', 'Patients', 'notes', 'Patient Notes (write,addonly optional)', 'write');
 
 
-
-@addNewACL('Imaging receptionist', 'imaging_receptionist', 'view', 'Things that imaging receptionist can read but not modify');
-addObjectSectionAcl('client_app', 'Client Application');
-addObjectAcl('client_app', 'Client Application', 'PatientTrackingInvited','Patient Tracking Invited');
-
-
-
 addObjectSectionAcl('fhir_api', 'FHIR API');
 addObjectAcl('fhir_api', 'FHIR API', 'patient','Patient');
 addObjectAcl('fhir_api', 'FHIR API', 'appointment','Appointment');

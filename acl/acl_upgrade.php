@@ -104,6 +104,6 @@ return $ACL_UPGRADE = array(
         addObjectAcl('fhir_api', 'FHIR API', 'valueset','Value Set');
         addObjectAcl('fhir_api', 'FHIR API', 'relatedperson','Related Person');
         addObjectAcl('fhir_api', 'FHIR API', 'documentreference','Document Reference');
-        
+
   }
 );
