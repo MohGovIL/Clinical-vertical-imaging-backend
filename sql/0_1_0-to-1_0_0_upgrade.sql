@@ -511,3 +511,40 @@ UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh
 
 
 ALTER TABLE facility AUTO_INCREMENT = 17;
+
+#IfNotRow fhir_rest_elements name Questionnaire
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('8', 'Questionnaire', '1');
+#EndIf
+
+
+
+#IfNotTable fhir_rest_elements
+CREATE TABLE form_commitment_questionnaire(
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    is_deleted  tinyint(4) DEFAULT 1,
+    pid bigint(20) DEFAULT NULL,
+    encounter varchar(255) DEFAULT NULL,
+    commitment_number int(11) NOT NULL,
+    commitment_date date NOT NULL,
+    commitment_expiration_date date NOT NULL,
+    signing_doctor bigint(20) NOT NULL,
+    doctor_license_number bigint(20) NOT NULL,
+    create_date datetime DEFAULT current_timestamp,
+    update_date datetime DEFAULT current_timestamp,
+    create_by bigint(20) NOT NULL,
+    update_by bigint(20) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+#EndIf
+
+
+#IfNotTable questionnaires_schemas
+    CREATE TABLE questionnaires_schemas(
+    id int(11) NOT NULL AUTO_INCREMENT,
+    form_name varchar(255) NOT NULL,
+    column_name varchar(255) NOT NULL,
+    column_type varchar(255) NOT NULL,
+    question varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+);
+#EndIf

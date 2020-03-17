@@ -232,3 +232,42 @@ UPDATE `list_options` SET `option_id` = '7' WHERE `list_options`.`list_id` = 'mh
 UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_4';
 
 ALTER TABLE facility AUTO_INCREMENT = 17;
+
+
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('8', 'Questionnaire', '1');
+
+
+CREATE TABLE form_commitment_questionnaire(
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    is_deleted  tinyint(4) DEFAULT 1,
+    pid bigint(20) DEFAULT NULL,
+    encounter varchar(255) DEFAULT NULL,
+    commitment_number int(11) NOT NULL,
+    commitment_date date NOT NULL,
+    commitment_expiration_date date NOT NULL,
+    signing_doctor bigint(20) NOT NULL,
+    doctor_license_number bigint(20) NOT NULL,
+    create_date datetime DEFAULT current_timestamp,
+    update_date datetime DEFAULT current_timestamp,
+    create_by bigint(20) NOT NULL,
+    update_by bigint(20) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE questionnaires_schemas(
+    id int(11) NOT NULL AUTO_INCREMENT,
+    form_name varchar(255) NOT NULL,
+    column_name varchar(255) NOT NULL,
+    column_type varchar(255) NOT NULL,
+    question varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+);
+
+INSERT INTO `questionnaires_schemas` (`id`, `form_name`, `column_name`, `column_type`, `question`)
+VALUES
+('1', 'commitment_questionnaire', 'commitment_number', 'integer', 'Commitment number'),
+('2', 'commitment_questionnaire', 'commitment_date', 'date', 'Commitment date'),
+('3', 'commitment_questionnaire', 'commitment_expiration_date', 'date', 'Commitment expiration date'),
+('4', 'commitment_questionnaire', 'signing_doctor', 'integer', 'Signing doctor'),
+('5', 'commitment_questionnaire', 'doctor_license_number', 'integer', 'doctor license number');
