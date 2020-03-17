@@ -55,7 +55,8 @@ INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
 ('Appointment', 1),
 ('HealthcareService', 1),
 ('Encounter', 1),
-('ValueSet', 1);
+('ValueSet', 1),
+('DocumentReference', 1);
 
 ALTER TABLE facility
 ADD active int DEFAULT 1;
