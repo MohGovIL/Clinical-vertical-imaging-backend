@@ -239,18 +239,10 @@ INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('9', 'Question
 
 CREATE TABLE form_commitment_questionnaire(
     id bigint(20) NOT NULL AUTO_INCREMENT,
-    is_deleted  tinyint(4) DEFAULT 1,
-    pid bigint(20) DEFAULT NULL,
     encounter varchar(255) DEFAULT NULL,
-    commitment_number int(11) NOT NULL,
-    commitment_date date NOT NULL,
-    commitment_expiration_date date NOT NULL,
-    signing_doctor bigint(20) NOT NULL,
-    doctor_license_number bigint(20) NOT NULL,
-    create_date datetime DEFAULT current_timestamp,
-    update_date datetime DEFAULT current_timestamp,
-    create_by bigint(20) NOT NULL,
-    update_by bigint(20) NOT NULL,
+    form_id bigint(20) NOT NULL,
+    question_id int(11) NOT NULL,
+    answer text,
     PRIMARY KEY (`id`)
 );
 
@@ -265,13 +257,14 @@ CREATE TABLE questionnaires_schemas(
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO `questionnaires_schemas` (`id`, `form_name`,`form_table`, `column_name`, `column_type`, `question`)
+
+INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
 VALUES
-('1', 'commitment_questionnaire','form_commitment_questionnaire', 'commitment_number', 'integer', 'Commitment number'),
-('2', 'commitment_questionnaire','form_commitment_questionnaire', 'commitment_date', 'date', 'Commitment date'),
-('3', 'commitment_questionnaire','form_commitment_questionnaire', 'commitment_expiration_date', 'date', 'Commitment expiration date'),
-('4', 'commitment_questionnaire','form_commitment_questionnaire', 'signing_doctor', 'integer', 'Signing doctor'),
-('5', 'commitment_questionnaire','form_commitment_questionnaire', 'doctor_license_number', 'integer', 'doctor license number');
+('1', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Commitment number'),
+('2', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment date'),
+('3', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment expiration date'),
+('4', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Signing doctor'),
+('5', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'doctor license number');
 
 
 CREATE TABLE `questionnaire_response`(
@@ -280,6 +273,12 @@ CREATE TABLE `questionnaire_response`(
     form_id bigint(20) NOT NULL,
     encounter bigint(20) NOT NULL,
     pid bigint(20) NOT NULL,
+    create_date datetime DEFAULT current_timestamp,
+    update_date datetime DEFAULT current_timestamp,
+    create_by bigint(20) NOT NULL,
+    update_by bigint(20) NOT NULL,
+    source  bigint(20) NOT NULL,
+    status  varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
