@@ -516,6 +516,9 @@ ALTER TABLE facility AUTO_INCREMENT = 17;
 INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('8', 'Questionnaire', '1');
 #EndIf
 
+#IfNotRow fhir_rest_elements name QuestionnaireResponse
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('9', 'QuestionnaireResponse', '1');
+#EndIf
 
 
 #IfNotTable fhir_rest_elements
@@ -542,9 +545,37 @@ CREATE TABLE form_commitment_questionnaire(
     CREATE TABLE questionnaires_schemas(
     id int(11) NOT NULL AUTO_INCREMENT,
     form_name varchar(255) NOT NULL,
+    form_table varchar(255) NOT NULL,
     column_name varchar(255) NOT NULL,
     column_type varchar(255) NOT NULL,
     question varchar(255) DEFAULT NULL,
     PRIMARY KEY (`id`)
 );
+
+INSERT INTO `questionnaires_schemas` (`id`, `form_name`,`form_table`, `column_name`, `column_type`, `question`,`question`)
+VALUES
+('1', 'commitment_questionnaire','form_commitment_questionnaire', 'commitment_number', 'integer', 'Commitment number'),
+('2', 'commitment_questionnaire','form_commitment_questionnaire', 'commitment_date', 'date', 'Commitment date'),
+('3', 'commitment_questionnaire','form_commitment_questionnaire', 'commitment_expiration_date', 'date', 'Commitment expiration date'),
+('4', 'commitment_questionnaire','form_commitment_questionnaire', 'signing_doctor', 'integer', 'Signing doctor'),
+('5', 'commitment_questionnaire','form_commitment_questionnaire', 'doctor_license_number', 'integer', 'doctor license number');
+#EndIf
+
+#IfNotTable questionnaire_response
+CREATE TABLE `questionnaire_response`(
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    form_name varchar(255) NOT NULL,
+    form_id bigint(20) NOT NULL,
+    encounter bigint(20) NOT NULL,
+    pid bigint(20) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+ALTER TABLE `questionnaire_response` ADD UNIQUE `unique_index`( `form_name`, `form_id`);
+#EndIf
+
+
+#IfNotRow registry directory form_commitment_questionnaire
+INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`) VALUES
+('Commitment questionnaire', 1, 'commitment_questionnaire', 1, 1, '2020-03-14 00:00:00', 0, 'Clinical', '', 0, 0, 'encounters|notes');
 #EndIf
