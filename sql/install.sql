@@ -232,3 +232,6 @@ UPDATE `list_options` SET `option_id` = '7' WHERE `list_options`.`list_id` = 'mh
 UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_4';
 
 ALTER TABLE facility AUTO_INCREMENT = 17;
+
+
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Practitioner', 1);
