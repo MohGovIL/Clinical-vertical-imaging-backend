@@ -560,12 +560,14 @@ CREATE TABLE `questionnaire_response`(
     form_name varchar(255) NOT NULL,
     form_id bigint(20) NOT NULL,
     encounter bigint(20) NOT NULL,
-    pid bigint(20) NOT NULL,
+    subject bigint(20) NOT NULL,
+    subject_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
     create_date datetime DEFAULT current_timestamp,
     update_date datetime DEFAULT current_timestamp,
     create_by bigint(20) NOT NULL,
     update_by bigint(20) NOT NULL,
     source  bigint(20) NOT NULL,
+    source_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
     status  varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
 );
