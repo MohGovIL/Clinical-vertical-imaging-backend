@@ -30,54 +30,54 @@
 assets:
 # generic files
     load-base-path:
-        basePath: %webroot%/clinikal/public/
+        basePath: '%webroot%/clinikal/public/'
         script: js/base_path.js
         autoload: true
     civil-registry-new:
-        basePath: %webroot%/clinikal/public/
+        basePath: '%webroot%/clinikal/public/'
         script: js/new_patient_verification_button.js
         loadInFile: interface/new/new.php
     civil-registry-edit:
-        basePath: %webroot%/clinikal/public/
+        basePath: '%webroot%/clinikal/public/'
         script: js/verification_button.js
         loadInFile: interface/patient_file/summary/demographics_full.php
     select-streets:
-        basePath: %webroot%/clinikal/public/
+        basePath: '%webroot%/clinikal/public/'
         script: js/multi_select.js
         loadInFile: interface/patient_file/summary/demographics_full.php
     update-remote:
-        basePath: %webroot%/clinikal/public/
+        basePath: '%webroot%/clinikal/public/'
         script: js/update_remote_patients.js
         loadInFile: interface/patient_file/summary/demographics_full.php
     scanner:
-        basePath: %webroot%/clinikal/public/
+        basePath: '%webroot%/clinikal/public/'
         script: js/scaner.js
         loadInFile: controller.php
     fix-edit-issue:
-        basePath: %webroot%/clinikal/public/
+        basePath: '%webroot%/clinikal/public/'
         script: js/fix_edit_issue.js
         loadInFile: interface/patient_file/summary/add_edit_issue.php
     fix-close-popup:
-        basePath: %webroot%/clinikal/public/
+        basePath: '%webroot%/clinikal/public/'
         script: js/fix_close_popup.js
         loadInFile: interface/patient_file/encounter/forms.php
     sumoselect:
-        basePath: %webroot%/interface/modules/zend_modules/public/
+        basePath: '%webroot%/interface/modules/zend_modules/public/'
         script: js/sumoselect/jquery.sumoselect.js
         link: css/sumoselect/sumoselect.css
         autoload: true
     timepicker:
-        basePath: %webroot%/interface/modules/zend_modules/public/
+        basePath: '%webroot%/interface/modules/zend_modules/public/'
         script: js/lib/jquery.timepicker.min.js
     tooltipster:
-        basePath: %webroot%/interface/modules/zend_modules/public/
+        basePath: '%webroot%/interface/modules/zend_modules/public/'
         script: /js/lib/tooltipster.bundle.min.js
         link: /css/tooltipster.bundle.min.css
     validateJS:
-            basePath: %webroot%/library/js/vendors/validate/
+            basePath: '%webroot%/library/js/vendors/validate/'
             script: validate_modified.js
     validateJSExt:
-            basePath: %webroot%/library/js/vendors/validate/
+            basePath: '%webroot%/library/js/vendors/validate/'
             script: validate_extend.js
 # end generic files
 
