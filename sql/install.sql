@@ -270,7 +270,6 @@ VALUES
 CREATE TABLE `questionnaire_response`(
     id bigint(20) NOT NULL AUTO_INCREMENT,
     form_name varchar(255) NOT NULL,
-    form_id bigint(20) NOT NULL,
     encounter bigint(20) NOT NULL,
     subject bigint(20) NOT NULL,
     subject_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
@@ -283,8 +282,6 @@ CREATE TABLE `questionnaire_response`(
     status  varchar(255) NOT NULL,
     PRIMARY KEY (`id`)
 );
-
-ALTER TABLE `questionnaire_response` ADD UNIQUE `unique_index`( `form_name`, `form_id`);
 
 
 INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`) VALUES
