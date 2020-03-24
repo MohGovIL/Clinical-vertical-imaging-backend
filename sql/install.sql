@@ -246,6 +246,8 @@ CREATE TABLE form_commitment_questionnaire(
     PRIMARY KEY (`id`)
 );
 
+ALTER TABLE `form_commitment_questionnaire` ADD UNIQUE `unique_index`( `form_id`, `question_id`);
+
 
 CREATE TABLE questionnaires_schemas(
     id int(11) NOT NULL AUTO_INCREMENT,

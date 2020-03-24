@@ -530,6 +530,8 @@ CREATE TABLE form_commitment_questionnaire(
     answer text,
     PRIMARY KEY (`id`)
 );
+
+ALTER TABLE `form_commitment_questionnaire` ADD UNIQUE `unique_index`( `form_id`, `question_id`);
 #EndIf
 
 
