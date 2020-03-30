@@ -511,3 +511,8 @@ UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh
 
 
 ALTER TABLE facility AUTO_INCREMENT = 17;
+
+
+#IfNotRow fhir_rest_elements name Practitioner
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Practitioner', 1);
+#EndIf
