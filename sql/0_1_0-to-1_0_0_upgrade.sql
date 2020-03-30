@@ -516,3 +516,17 @@ ALTER TABLE facility AUTO_INCREMENT = 17;
 #IfNotRow fhir_rest_elements name Practitioner
 INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Practitioner', 1);
 #EndIf
+
+
+#IfRow2D list_options list_id userlist3 option_id id
+DELETE FROM `list_options` WHERE `list_id` like "userlist3";
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
+VALUES
+('userlist3', 'teudat_zehut', 'Teudat zehut', '10', '1', '0','','1'),
+('userlist3', 'passport', 'Passport', '20', '0', '0','', '1'),
+('userlist3', 'temporary', 'Temporary', '30', '0', '0','' ,'1');
+
+UPDATE `patient_data` SET `mh_type_id` = 'temporary' WHERE `patient_data`.`mh_type_id` = "idtype_3";
+UPDATE `patient_data` SET `mh_type_id` = 'passport' WHERE `patient_data`.`mh_type_id` = "idtype_2";
+UPDATE `patient_data` SET `mh_type_id` = 'id'       WHERE `patient_data`.`mh_type_id` = "idtype_1";
+#EndIf

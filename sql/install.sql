@@ -235,3 +235,16 @@ ALTER TABLE facility AUTO_INCREMENT = 17;
 
 
 INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Practitioner', 1);
+
+
+
+
+DELETE FROM `list_options` WHERE `list_id` like "userlist3";
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
+VALUES
+('userlist3', 'teudat_zehut', 'Teudat zehut', '10', '1', '0','','1'),
+('userlist3', 'passport', 'Passport', '20', '0', '0','', '1'),
+('userlist3', 'temporary', 'Temporary', '30', '0', '0','' ,'1');
+
+
+
