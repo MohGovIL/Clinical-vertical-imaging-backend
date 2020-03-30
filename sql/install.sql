@@ -248,3 +248,13 @@ VALUES
 
 
 
+DELETE FROM `list_options` WHERE `list_id` like "sex";
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
+VALUES
+('sex', 'male', 'Male', '10', '1', '0','','1'),
+('sex', 'female', 'Female', '20', '0', '0','', '1'),
+('sex', 'other', 'Other', '30', '0', '0','', '1'),
+('sex', 'unknown', 'Unknown', '40', '0', '0','' ,'0');
+
+
+

@@ -530,3 +530,18 @@ UPDATE `patient_data` SET `mh_type_id` = 'temporary' WHERE `patient_data`.`mh_ty
 UPDATE `patient_data` SET `mh_type_id` = 'passport' WHERE `patient_data`.`mh_type_id` = "idtype_2";
 UPDATE `patient_data` SET `mh_type_id` = 'id'       WHERE `patient_data`.`mh_type_id` = "idtype_1";
 #EndIf
+
+
+#IfRow2D list_options list_id sex option_id male
+
+DELETE FROM `list_options` WHERE `list_id` like "sex";
+
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
+VALUES
+('sex', 'male', 'Male', '10', '1', '0','','1'),
+('sex', 'female', 'Female', '20', '0', '0','', '1'),
+('sex', 'other', 'Other', '30', '0', '0','', '1'),
+('sex', 'unknown', 'Unknown', '40', '0', '0','' ,'0');
+
+#EndIf
+
