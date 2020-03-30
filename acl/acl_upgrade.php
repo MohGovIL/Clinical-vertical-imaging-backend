@@ -107,14 +107,14 @@ return $ACL_UPGRADE = array(
         addObjectAcl('fhir_api', 'FHIR API', 'questionnaire','Questionnaire');
         addObjectAcl('fhir_api', 'FHIR API', 'questionnaireresponse','Questionnaire Response');
 
-        
+
 
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'patient','Patient', 'write');
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'appointment','Appointment', 'write');
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'encounter','Encounter', 'write');
-        updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
-        updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
-        updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
+        //updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
+        //updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
+        //updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'valueset','Value Set', 'write');
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'relatedperson','Related Person', 'write');
         updateAcl(Roles_ids::instance()->admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'write');
@@ -138,9 +138,9 @@ return $ACL_UPGRADE = array(
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'patient','Patient', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'appointment','Appointment', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'encounter','Encounter', 'write');
-        updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
-        updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
-        updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'valueset','Value Set', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'relatedperson','Related Person', 'write');
         updateAcl(Roles_ids::instance()->imaging_receptionist_write, 'Imaging receptionist', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'write');
@@ -165,9 +165,9 @@ return $ACL_UPGRADE = array(
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'patient','Patient', 'write');
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'appointment','Appointment', 'write');
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'encounter','Encounter', 'write');
-        updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
-        updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
-        updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'valueset','Value Set', 'write');
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'relatedperson','Related Person', 'write');
         updateAcl(Roles_ids::instance()->imaging_clinic_manager_write, 'Imaging manager', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'write');
@@ -191,9 +191,9 @@ return $ACL_UPGRADE = array(
 
         updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'appointment','Appointment', 'write');
         updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'encounter','Encounter', 'write');
-        updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
-        updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
-        updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
         updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'valueset','Value Set', 'write');
         updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'relatedperson','Related Person', 'write');
         updateAcl(Roles_ids::instance()->imaging_doctor_write, 'Imaging doctor', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'write');
@@ -215,9 +215,9 @@ return $ACL_UPGRADE = array(
 
         updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'appointment','Appointment', 'write');
         updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'encounter','Encounter', 'write');
-        updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
-        updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
-        updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'organization','Organization', 'write');
+        //updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'write');
         updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'valueset','Value Set', 'write');
         updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'relatedperson','Related Person', 'write');
         updateAcl(Roles_ids::instance()->imaging_technician_write, 'Imaging technician', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'write');
