@@ -502,7 +502,9 @@ VALUES
 ('5', 'hmo_1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#91AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
 ('6', 'hmo_2', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#92AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
 ('7', 'hmo_3', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#93AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('8', 'hmo_4', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#94AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1');
+('8', 'hmo_4', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#94AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('9', 'idf', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#95AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1');
+
 
 UPDATE `list_options` SET `option_id` = '5' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_1';
 UPDATE `list_options` SET `option_id` = '6' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_2';
@@ -512,7 +514,41 @@ UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh
 
 ALTER TABLE facility AUTO_INCREMENT = 17;
 
+#IfRow2D list_options list_id mh_ins_organizations option_id idf
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
+VALUES
+('mh_ins_organizations', 'idf', 'IDF', '0', '0', '0','' ,'1');
+#EndIf
 
 #IfNotRow fhir_rest_elements name Practitioner
 INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Practitioner', 1);
 #EndIf
+
+
+#IfRow2D list_options list_id userlist3 option_id id
+DELETE FROM `list_options` WHERE `list_id` like "userlist3";
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
+VALUES
+('userlist3', 'teudat_zehut', 'Teudat zehut', '10', '1', '0','','1'),
+('userlist3', 'passport', 'Passport', '20', '0', '0','', '1'),
+('userlist3', 'temporary', 'Temporary', '30', '0', '0','' ,'1');
+
+UPDATE `patient_data` SET `mh_type_id` = 'temporary' WHERE `patient_data`.`mh_type_id` = "idtype_3";
+UPDATE `patient_data` SET `mh_type_id` = 'passport' WHERE `patient_data`.`mh_type_id` = "idtype_2";
+UPDATE `patient_data` SET `mh_type_id` = 'id'       WHERE `patient_data`.`mh_type_id` = "idtype_1";
+#EndIf
+
+
+#IfRow2D list_options list_id sex option_id male
+
+DELETE FROM `list_options` WHERE `list_id` like "sex";
+
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
+VALUES
+('sex', 'male', 'Male', '10', '1', '0','','1'),
+('sex', 'female', 'Female', '20', '0', '0','', '1'),
+('sex', 'other', 'Other', '30', '0', '0','', '1'),
+('sex', 'unknown', 'Unknown', '40', '0', '0','' ,'0');
+
+#EndIf
+
