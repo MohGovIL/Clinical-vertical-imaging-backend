@@ -3,6 +3,8 @@
 /* Vaccines groups */
 //$receptionist_view = @addNewACL('Vaccine receptionists', 'receptionist', 'view', 'Things that receptionists can read but not modify');
 //$receptionist_write = @addNewACL('Vaccine receptionists', 'receptionist', 'write', 'Things that receptionists can modify');
+$admin_write = getAclIdNumber('Administrators', 'write');
+$admin_view = getAclIdNumber('Administrators', 'view');
 
 $imaging_technician_write =@addNewACL('Imaging technician', 'imaging_technician', 'write', 'Things that imaging technician can modify');
 $imaging_technician_view =@addNewACL('Imaging technician', 'imaging_technician', 'view', 'Things that imaging technician can read but not modify');
