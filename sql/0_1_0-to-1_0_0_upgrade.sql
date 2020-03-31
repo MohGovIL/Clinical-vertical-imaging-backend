@@ -514,6 +514,75 @@ UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh
 
 ALTER TABLE facility AUTO_INCREMENT = 17;
 
+#IfNotRow fhir_rest_elements name Questionnaire
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('8', 'Questionnaire', '1');
+#EndIf
+
+#IfNotRow fhir_rest_elements name QuestionnaireResponse
+INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('9', 'QuestionnaireResponse', '1');
+#EndIf
+
+
+#IfNotTable fhir_rest_elements
+CREATE TABLE form_commitment_questionnaire(
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    encounter varchar(255) DEFAULT NULL,
+    form_id bigint(20) NOT NULL,
+    question_id int(11) NOT NULL,
+    answer text,
+    PRIMARY KEY (`id`)
+);
+
+ALTER TABLE `form_commitment_questionnaire` ADD UNIQUE `unique_index`( `form_id`, `question_id`);
+#EndIf
+
+
+#IfNotTable questionnaires_schemas
+CREATE TABLE questionnaires_schemas(
+    id int(11) NOT NULL AUTO_INCREMENT,
+    form_name varchar(255) NOT NULL,
+    form_table varchar(255) NOT NULL,
+    column_name varchar(255) NOT NULL,
+    column_type varchar(255) NOT NULL,
+    question varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+);
+
+
+INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
+VALUES
+('1', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Commitment number'),
+('2', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment date'),
+('3', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment expiration date'),
+('4', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Signing doctor'),
+('5', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'doctor license number');
+#EndIf
+
+#IfNotTable questionnaire_response
+CREATE TABLE `questionnaire_response`(
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    form_name varchar(255) NOT NULL,
+    encounter bigint(20) NOT NULL,
+    subject bigint(20) NOT NULL,
+    subject_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
+    create_date datetime DEFAULT current_timestamp,
+    update_date datetime DEFAULT current_timestamp,
+    create_by bigint(20) NOT NULL,
+    update_by bigint(20) NOT NULL,
+    source  bigint(20) NOT NULL,
+    source_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
+    status  varchar(255) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+#EndIf
+
+
+#IfNotRow registry directory form_commitment_questionnaire
+INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`) VALUES
+('Commitment questionnaire', 1, 'commitment_questionnaire', 1, 1, '2020-03-14 00:00:00', 0, 'Clinical', '', 0, 0, 'encounters|notes');
+#EndIf
+
 #IfRow2D list_options list_id mh_ins_organizations option_id idf
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
 VALUES
