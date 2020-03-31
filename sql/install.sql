@@ -263,3 +263,16 @@ VALUES
 
 
 
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`)
+VALUES
+('identifier_type_list', 'userlist3', 'All', NULL),
+('gender', 'sex', 'Partial', NULL);
+
+INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
+(LAST_INSERT_ID(), 'female'),
+(LAST_INSERT_ID(), 'male'),
+(LAST_INSERT_ID(), 'other');
+
+
+
+
