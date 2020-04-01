@@ -255,7 +255,7 @@ ALTER TABLE `form_commitment_questionnaire` ADD UNIQUE `unique_index`( `form_id`
 
 
 CREATE TABLE questionnaires_schemas(
-    id int(11) NOT NULL AUTO_INCREMENT,
+    qid int(11) NOT NULL AUTO_INCREMENT,
     form_name varchar(255) NOT NULL,
     form_table varchar(255) NOT NULL,
     column_name varchar(255) NOT NULL,
