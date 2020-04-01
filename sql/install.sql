@@ -239,8 +239,8 @@ VALUES
 ALTER TABLE facility AUTO_INCREMENT = 17;
 
 
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('8', 'Questionnaire', '1');
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('9', 'QuestionnaireResponse', '1');
+INSERT INTO `fhir_rest_elements` ( `name`, `active`) VALUES ( 'Questionnaire', '1');
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('QuestionnaireResponse', '1');
 
 CREATE TABLE form_commitment_questionnaire(
     id bigint(20) NOT NULL AUTO_INCREMENT,

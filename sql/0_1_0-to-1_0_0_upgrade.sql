@@ -515,11 +515,11 @@ UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh
 ALTER TABLE facility AUTO_INCREMENT = 17;
 
 #IfNotRow fhir_rest_elements name Questionnaire
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('8', 'Questionnaire', '1');
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Questionnaire', '1');
 #EndIf
 
 #IfNotRow fhir_rest_elements name QuestionnaireResponse
-INSERT INTO `fhir_rest_elements` (`id`, `name`, `active`) VALUES ('9', 'QuestionnaireResponse', '1');
+INSERT INTO `fhir_rest_elements` ( `name`, `active`) VALUES ('QuestionnaireResponse', '1');
 #EndIf
 
 
