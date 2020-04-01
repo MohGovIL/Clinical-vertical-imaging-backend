@@ -261,7 +261,7 @@ CREATE TABLE questionnaires_schemas(
     column_name varchar(255) NOT NULL,
     column_type varchar(255) NOT NULL,
     question varchar(255) DEFAULT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`qid`)
 );
 
 
