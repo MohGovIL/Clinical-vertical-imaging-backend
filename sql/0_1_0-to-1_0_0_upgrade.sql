@@ -594,7 +594,7 @@ INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Practitioner', 1);
 #EndIf
 
 
-#IfRow2D list_options list_id userlist3 option_id id
+#IfNotRow2D list_options list_id userlist3 option_id passport
 DELETE FROM `list_options` WHERE `list_id` like "userlist3";
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
 VALUES
@@ -608,7 +608,7 @@ UPDATE `patient_data` SET `mh_type_id` = 'id'       WHERE `patient_data`.`mh_typ
 #EndIf
 
 
-#IfRow2D list_options list_id sex option_id male
+#IfNotRow3D list_options list_id sex option_id unknown activity 0
 
 DELETE FROM `list_options` WHERE `list_id` like "sex";
 
