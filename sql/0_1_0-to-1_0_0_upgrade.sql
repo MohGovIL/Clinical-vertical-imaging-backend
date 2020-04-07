@@ -316,6 +316,14 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('clinikal_app_statuses', '6', 'Waitlisted', 60, 0, 0, '', '', '', 0, 0, 1, '', 1);
 #EndIf
 
+#IfNotRow fhir_value_sets id appointment_statuses
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('appointment_statuses', 'Appointment Statuses');
+#EndIf
+
+#IfNotRow2D fhir_value_set_systems vs_id appointment_statuses system clinikal_app_statuses
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('appointment_statuses', 'clinikal_app_statuses', 'All');
+#EndIf
+
 #IfNotRow fhir_value_sets id patient_tracking_statuses
 INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('patient_tracking_statuses', 'Appointment Statuses For Patients Tracking');
 #EndIf
