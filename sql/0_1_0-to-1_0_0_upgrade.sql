@@ -507,11 +507,11 @@ ALTER TABLE `form_encounter` ADD `escort_id` BIGINT(20) NULL DEFAULT NULL  COMME
 
 REPLACE INTO `facility` (`id`, `name`, `phone`, `fax`, `street`, `city`, `state`, `postal_code`, `country_code`, `federal_ein`, `website`, `email`, `service_location`, `billing_location`, `accepts_assignment`, `pos_code`, `x12_sender_id`, `attn`, `domain_identifier`, `facility_npi`, `tax_id_type`, `color`, `primary_business_entity`, `facility_code`, `extra_validation`, `facility_taxonomy`, `mail_street`, `mail_street2`, `mail_city`, `mail_state`, `mail_zip`, `oid`, `iban`, `info`, `active`)
 VALUES
-('5', 'hmo_1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#91AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('6', 'hmo_2', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#92AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('7', 'hmo_3', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#93AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('8', 'hmo_4', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#94AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('9', 'idf', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#95AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1');
+('5', 'כללית', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#91AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('6', 'מכבי', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#92AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('7', 'מאוחדת', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#93AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('8', 'לאומית', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#94AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('9', 'צה"ל', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#95AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1');
 
 
 UPDATE `list_options` SET `option_id` = '5' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_1';
@@ -521,6 +521,75 @@ UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh
 
 
 ALTER TABLE facility AUTO_INCREMENT = 17;
+
+#IfNotRow fhir_rest_elements name Questionnaire
+INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Questionnaire', '1');
+#EndIf
+
+#IfNotRow fhir_rest_elements name QuestionnaireResponse
+INSERT INTO `fhir_rest_elements` ( `name`, `active`) VALUES ('QuestionnaireResponse', '1');
+#EndIf
+
+
+#IfNotTable fhir_rest_elements
+CREATE TABLE form_commitment_questionnaire(
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    encounter varchar(255) DEFAULT NULL,
+    form_id bigint(20) NOT NULL,
+    question_id int(11) NOT NULL,
+    answer text,
+    PRIMARY KEY (`id`)
+);
+
+ALTER TABLE `form_commitment_questionnaire` ADD UNIQUE `unique_index`( `form_id`, `question_id`);
+#EndIf
+
+
+#IfNotTable questionnaires_schemas
+CREATE TABLE questionnaires_schemas(
+    qid int(11) NOT NULL AUTO_INCREMENT,
+    form_name varchar(255) NOT NULL,
+    form_table varchar(255) NOT NULL,
+    column_name varchar(255) NOT NULL,
+    column_type varchar(255) NOT NULL,
+    question varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`qid`)
+);
+
+
+INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
+VALUES
+('1', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Commitment number'),
+('2', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment date'),
+('3', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment expiration date'),
+('4', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Signing doctor'),
+('5', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'doctor license number');
+#EndIf
+
+#IfNotTable questionnaire_response
+CREATE TABLE `questionnaire_response`(
+    id bigint(20) NOT NULL AUTO_INCREMENT,
+    form_name varchar(255) NOT NULL,
+    encounter bigint(20) NOT NULL,
+    subject bigint(20) NOT NULL,
+    subject_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
+    create_date datetime DEFAULT current_timestamp,
+    update_date datetime DEFAULT current_timestamp,
+    create_by bigint(20) NOT NULL,
+    update_by bigint(20) NOT NULL,
+    source  bigint(20) NOT NULL,
+    source_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
+    status  varchar(255) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+#EndIf
+
+
+#IfNotRow registry directory form_commitment_questionnaire
+INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`) VALUES
+('Commitment questionnaire', 1, 'commitment_questionnaire', 1, 1, '2020-03-14 00:00:00', 0, 'Clinical', '', 0, 0, 'encounters|notes');
+#EndIf
 
 #IfRow2D list_options list_id mh_ins_organizations option_id idf
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
@@ -533,7 +602,7 @@ INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Practitioner', 1);
 #EndIf
 
 
-#IfRow2D list_options list_id userlist3 option_id id
+#IfNotRow2D list_options list_id userlist3 option_id passport
 DELETE FROM `list_options` WHERE `list_id` like "userlist3";
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
 VALUES
@@ -547,7 +616,7 @@ UPDATE `patient_data` SET `mh_type_id` = 'id'       WHERE `patient_data`.`mh_typ
 #EndIf
 
 
-#IfRow2D list_options list_id sex option_id male
+#IfNotRow3D list_options list_id sex option_id unknown activity 0
 
 DELETE FROM `list_options` WHERE `list_id` like "sex";
 
@@ -560,3 +629,16 @@ VALUES
 
 #EndIf
 
+
+
+#IfNotRow fhir_value_set_systems vs_id identifier_type_list
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`)
+VALUES
+('identifier_type_list', 'userlist3', 'All', NULL),
+('gender', 'sex', 'Partial', NULL);
+
+INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
+(LAST_INSERT_ID(), 'female'),
+(LAST_INSERT_ID(), 'male'),
+(LAST_INSERT_ID(), 'other');
+#EndIf
