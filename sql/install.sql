@@ -331,5 +331,9 @@ INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
 (LAST_INSERT_ID(), 'other');
 
 
+INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('fhir_type_validation', 0, '1');
+
+
 
 
