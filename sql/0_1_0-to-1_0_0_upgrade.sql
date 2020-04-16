@@ -639,7 +639,7 @@ VALUES
 
 
 DELETE FROM `fhir_value_set_systems` WHERE `fhir_value_set_systems`.`vs_id` = "gender";
-DELETE FROM `fhir_value_set_codes` WHERE `fhir_value_set_codes`.`code` IN('other','male','female')
+DELETE FROM `fhir_value_set_codes` WHERE `fhir_value_set_codes`.`code` IN('other','male','female');
 
 INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`)
 VALUES
