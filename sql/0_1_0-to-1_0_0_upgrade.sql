@@ -591,7 +591,7 @@ INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `
 ('Commitment questionnaire', 1, 'commitment_questionnaire', 1, 1, '2020-03-14 00:00:00', 0, 'Clinical', '', 0, 0, 'encounters|notes');
 #EndIf
 
-#IfRow2D list_options list_id mh_ins_organizations option_id idf
+#IfNotRow2D list_options list_id mh_ins_organizations option_id idf
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
 VALUES
 ('mh_ins_organizations', 'idf', 'IDF', '0', '0', '0','' ,'1');
