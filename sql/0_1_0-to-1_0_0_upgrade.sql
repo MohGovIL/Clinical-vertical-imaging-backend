@@ -634,13 +634,28 @@ VALUES
 #IfNotRow fhir_value_set_systems vs_id identifier_type_list
 INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`)
 VALUES
-('identifier_type_list', 'userlist3', 'All', NULL),
+('identifier_type_list', 'userlist3', 'All', NULL);
+#EndIf
+
+
+DELETE FROM `fhir_value_set_systems` WHERE `fhir_value_set_systems`.`vs_id` = "gender";
+DELETE FROM `fhir_value_set_codes` WHERE `fhir_value_set_codes`.`code` IN('other','male','female');
+
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`)
+VALUES
 ('gender', 'sex', 'Partial', NULL);
 
 INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
 (LAST_INSERT_ID(), 'female'),
 (LAST_INSERT_ID(), 'male'),
 (LAST_INSERT_ID(), 'other');
+
+#IfNotRow fhir_value_sets id gender
+INSERT INTO fhir_value_sets (id, title, status) VALUES('gender', 'Gender', 'active');
+#EndIf
+
+#IfNotRow fhir_value_sets id identifier_type_list
+INSERT INTO fhir_value_sets (id, title, status) VALUES('identifier_type_list', 'Identifier Type List', 'active');
 #EndIf
 
 
