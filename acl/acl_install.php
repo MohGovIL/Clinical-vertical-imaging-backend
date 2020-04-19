@@ -252,3 +252,22 @@ updateAcl($imaging_call_center_representative_view,  'Imaging representative', '
 updateAcl($imaging_call_center_representative_view,  'Imaging representative', 'fhir_api', 'FHIR API', 'appointment','Appointment', 'view');
 
 /**********************************************************/
+
+
+addObjectSectionAcl('clinikal_api', 'Clinikal API');
+addObjectAcl('clinikal_api', 'Clinikal API', 'general_settings','General settings');
+addObjectAcl('clinikal_api', 'Clinikal API', 'lists','Lists');
+
+updateAcl($admin_view,  'Administrators',                                    'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
+updateAcl($imaging_receptionist_view,  'Imaging receptionist',               'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
+updateAcl($imaging_clinic_manager_view,  'Imaging manager',                  'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
+updateAcl($imaging_doctor_view,  'Imaging doctor',                           'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
+updateAcl($imaging_technician_view,  'Imaging technician',                   'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
+updateAcl($imaging_call_center_representative_view,'Imaging representative', 'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
+
+updateAcl($admin_view,  'Administrators',                                    'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
+updateAcl($imaging_receptionist_view,  'Imaging receptionist',               'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
+updateAcl($imaging_clinic_manager_view,  'Imaging manager',                  'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
+updateAcl($imaging_doctor_view,  'Imaging doctor',                           'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
+updateAcl($imaging_technician_view,  'Imaging technician',                   'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
+updateAcl($imaging_call_center_representative_view,'Imaging representative', 'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
