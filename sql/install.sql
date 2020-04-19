@@ -338,5 +338,9 @@ INSERT INTO fhir_value_sets (id, title, status) VALUES('gender', 'Gender', 'acti
 INSERT INTO fhir_value_sets (id, title, status) VALUES('identifier_type_list', 'Identifier Type List', 'active');
 
 
+INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('fhir_type_validation', 0, '1');
+
+
 
 

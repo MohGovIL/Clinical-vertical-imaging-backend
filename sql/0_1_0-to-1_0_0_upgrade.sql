@@ -657,3 +657,9 @@ INSERT INTO fhir_value_sets (id, title, status) VALUES('gender', 'Gender', 'acti
 #IfNotRow fhir_value_sets id identifier_type_list
 INSERT INTO fhir_value_sets (id, title, status) VALUES('identifier_type_list', 'Identifier Type List', 'active');
 #EndIf
+
+
+#IfNotRow globals gl_name fhir_type_validation
+INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('fhir_type_validation', 0, '1');
+#EndIf
