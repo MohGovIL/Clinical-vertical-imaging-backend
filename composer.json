@@ -1,5 +1,5 @@
 {
-  "name": "clinikal/vertical-imaging-backend",
+  "name": "israeli-moh/vertical-imaging-backend",
   "description": "React app for OpenEMR",
   "type": "clinikal-vertical",
   "authors": [
@@ -14,6 +14,6 @@
     }
   ],
   "require": {
-    "clinikal/composer-installers-clinikal-extender": "dev-master"
+    "israeli-moh/composer-installers-clinikal-extender": "dev-master"
   }
 }
