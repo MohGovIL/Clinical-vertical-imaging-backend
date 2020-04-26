@@ -11,7 +11,7 @@ CREATE TABLE `moh_import_data` (
   `source` enum('EDM','CSV') NOT NULL,
   `update_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+ 
 --
 -- Dumping data for table `moh_import_data`
 --
