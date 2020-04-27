@@ -146,3 +146,58 @@ VALUES
 
 
 
+
+-- --------------------------------------------------------
+
+UPDATE `categories` SET `name` = 'HPatient Photograph', `lft` = '105', `rght` = '106' WHERE `id` = '4';
+UPDATE `categories` SET `name` = 'EMedical Record', `lft` = '101', `rght` = '102' WHERE `id` = '2';
+UPDATE `categories` SET `rght` = '271' WHERE `id` = '1';
+UPDATE `categories` SET `name` = 'FLab Report', `lft` = '103', `rght` = '104' WHERE `id` = '3';
+
+DELETE FROM `categories` WHERE `id` = '19';
+DELETE FROM `categories` WHERE `id` = '22';
+DELETE FROM `categories` WHERE `id` = '15';
+DELETE FROM `categories` WHERE `id` = '14';
+DELETE FROM `categories` WHERE `id` = '11';
+DELETE FROM `categories` WHERE `id` = '21';
+DELETE FROM `categories` WHERE `id` = '25';
+DELETE FROM `categories` WHERE `id` = '20';
+DELETE FROM `categories` WHERE `id` = '27';
+DELETE FROM `categories` WHERE `id` = '6';
+DELETE FROM `categories` WHERE `id` = '12';
+DELETE FROM `categories` WHERE `id` = '24';
+DELETE FROM `categories` WHERE `id` = '9';
+DELETE FROM `categories` WHERE `id` = '10';
+DELETE FROM `categories` WHERE `id` = '5';
+DELETE FROM `categories` WHERE `id` = '8';
+DELETE FROM `categories` WHERE `id` = '16';
+DELETE FROM `categories` WHERE `id` = '17';
+DELETE FROM `categories` WHERE `id` = '18';
+DELETE FROM `categories` WHERE `id` = '13';
+DELETE FROM `categories` WHERE `id` = '28';
+DELETE FROM `categories` WHERE `id` = '7';
+DELETE FROM `categories` WHERE `id` = '29';
+DELETE FROM `categories` WHERE `id` = '26';
+DELETE FROM `categories` WHERE `id` = '23';
+
+DELETE FROM `categories_seq` WHERE `id` = '29';
+INSERT INTO `categories_seq` (`id`) VALUES('9');
+
+
+-- FOR EVERY LIST FROM LIST OPTIONS WE USED IN THE FHIR API/ CLINIKAL API WE NEED ADD -
+-- FOR EXAMPLE - INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`, `timestamp`) VALUES ('lists','mh_cities','moh cities',311,1,0,'','','',0,0,1,'',1,'2017-03-02 07:07:44');
+
+
+-- FOR EVERY NEW COLUNMS IN PATIENT_DATA WE USED IN THE FHIR API/ CLINIKAL API WE NEED ADD -
+
+--ALTER TABLE `patient_data`
+  ADD COLUMN <COLUMN> text NULL DEFAULT NULL
+
+
+
+
+
+
+
+
+

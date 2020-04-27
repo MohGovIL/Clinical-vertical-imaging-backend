@@ -18,7 +18,6 @@
  */
 namespace Imaging;
 
-use ClinikalAPI\Service\Imaging;
 
 use Interop\Container\ContainerInterface;
 use OpenEMR\Events\RestApiExtend\RestApiCreateEvent;
@@ -60,10 +59,7 @@ class Module {
     {
         return array(
             'factories' => array(
-                ApiBuilder::class =>  function(ContainerInterface $container) {
-                    $model = new ApiBuilder($container);
-                    return $model;
-                },
+
             ),
         );
     }

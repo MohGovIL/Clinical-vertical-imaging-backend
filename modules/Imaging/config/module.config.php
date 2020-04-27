@@ -17,7 +17,6 @@
  *
  */
 
-use ClinikalAPI\Controller\ManagerApi;
 use Interop\Container\ContainerInterface;
 
 return array(
@@ -26,9 +25,8 @@ return array(
 
     'controllers' => array(
         'factories' => [
-            ManagerApi::class => function (ContainerInterface $container) {
-                return new ManagerApi($container);
-            },
+
+
         ],
 
     ),
