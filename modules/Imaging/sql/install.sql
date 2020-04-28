@@ -1,5 +1,8 @@
 
-INSERT INTO `modules` (`mod_id`, `mod_name`, `mod_directory`, `mod_parent`, `mod_type`, `mod_active`, `mod_ui_name`, `mod_relative_link`, `mod_ui_order`, `mod_ui_active`, `mod_description`, `mod_nick_name`, `mod_enc_menu`, `permissions_item_table`, `directory`, `date`, `sql_run`, `type`) VALUES (NULL, 'ClinikalAPI', 'ClinikalAPI', '', '', '1', 'ClinikalAPI', '', '15', '0', '', '', '', NULL, '', '2019-12-04 00:26:40', '1', '1');
+REPLACE INTO `modules` (`mod_id`, `mod_name`, `mod_directory`, `mod_parent`, `mod_type`, `mod_active`, `mod_ui_name`, `mod_relative_link`, `mod_ui_order`, `mod_ui_active`, `mod_description`, `mod_nick_name`, `mod_enc_menu`, `permissions_item_table`, `directory`, `date`, `sql_run`, `type`, `sql_version`, `acl_version`)
+VALUES
+(null, 'Imaging', 'Imaging', '', '', 1, 'Imaging', 'public/imaging/', 0, 0, '', '', 'no', NULL, '', '2020-04-28 10:16:11', 0, 1, '', '');
+
 
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'clinikal_service_categories', 'Clinikal Service Categories', 0, 0, 0, '', '', '', 0, 0, 1, '', 1),
