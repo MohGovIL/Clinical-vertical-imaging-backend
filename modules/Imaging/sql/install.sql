@@ -60,10 +60,10 @@ VALUES
 ('appointment_statuses', 'Appointment Statuses'),
 ('identifier_type_list', 'Identifier Type List');
 
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`)
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`,`filter`)
 VALUES
-('service_types', 'clinikal_service_types', 'All'),
-('encounter_statuses', 'clinikal_enc_statuses', 'All'),
+('service_types', 'clinikal_service_types', 'All', NULL),
+('encounter_statuses', 'clinikal_enc_statuses', 'All', NULL),
 ('reason_codes_1', 'clinikal_reason_codes', 'Filter', '1'),
 ('reason_codes_2', 'clinikal_reason_codes', 'Filter', '2'),
 ('reason_codes_3', 'clinikal_reason_codes', 'Filter', '3'),
@@ -71,7 +71,7 @@ VALUES
 ('reason_codes_5', 'clinikal_reason_codes', 'Filter', '5'),
 ('reason_codes_6', 'clinikal_reason_codes', 'Filter', '6'),
 ('reason_codes_7', 'clinikal_reason_codes', 'Filter', '7'),
-('appointment_statuses', 'clinikal_app_statuses', 'All'),
+('appointment_statuses', 'clinikal_app_statuses', 'All', NULL),
 ('identifier_type_list', 'userlist3', 'All', NULL);
 
 
