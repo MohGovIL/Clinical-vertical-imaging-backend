@@ -186,9 +186,9 @@ INSERT INTO `categories_seq` (`id`) VALUES('9');
 -- FOR EXAMPLE - INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`, `timestamp`) VALUES ('lists','mh_cities','moh cities',311,1,0,'','','',0,0,1,'',1,'2017-03-02 07:07:44');
 
 
--- FOR EVERY NEW COLUNMS IN PATIENT_DATA WE USED IN THE FHIR API/ CLINIKAL API WE NEED ADD -
+-- FOR EVERY NEW COLUNMS IN PATIENT_DATA WE USED IN THE FHIR API/ CLINIKAL API WE NEED ADD 
 
---ALTER TABLE `patient_data`
+--  ALTER TABLE `patient_data`
 --  ADD COLUMN <COLUMN> text NULL DEFAULT NULL
 
 
