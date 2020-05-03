@@ -26,8 +26,7 @@ return $ACL_UPGRADE = array(
         AclExtended::addNewACL('Imaging receptionist', 'imaging_receptionist', 'write', 'Things that imaging receptionist can modify');
         AclExtended::addNewACL('Imaging receptionist', 'imaging_receptionist', 'view', 'Things that imaging receptionist can read but not modify');
 
-
-        $admin_view  = AclExtended::getAclIdNumber('Administrators', 'view');
+        
         $admin_write  = AclExtended::getAclIdNumber('Administrators', 'write');
 
         $imaging_technician_view  = AclExtended::getAclIdNumber('Imaging Technician', 'view');
@@ -71,7 +70,7 @@ return $ACL_UPGRADE = array(
           AclExtended::updateAcl($admin_write, 'Administrators', 'client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished', 'write');
           AclExtended::updateAcl($admin_write, 'Administrators', 'client_app', 'Client Application', 'PatientAdmission','Patient Admission', 'write');
           AclExtended::updateAcl($admin_write, 'Administrators', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
-          AclExtended::updateAcl($admin_view , 'Administrators', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
+          AclExtended::updateAcl($admin_write , 'Administrators', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
           AclExtended::updateAcl($admin_write, 'Administrators', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');*/
 
 
@@ -153,17 +152,17 @@ return $ACL_UPGRADE = array(
         AclExtended::updateAcl($admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'questionnaire','Questionnaire', 'write');
         AclExtended::updateAcl($admin_write, 'Administrators', 'fhir_api', 'FHIR API', 'questionnaireresponse','Questionnaire Response', 'write');
 
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'patient','Patient', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'appointment','Appointment', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'encounter','Encounter', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'organization','Organization', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'valueset','Value Set', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'relatedperson','Related Person', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'questionnaire','Questionnaire', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'questionnaireresponse','Questionnaire Response', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'patient','Patient', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'appointment','Appointment', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'encounter','Encounter', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'practitioner','Practitioner', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'organization','Organization', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'healthcareservice','Healthcareb Service', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'valueset','Value Set', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'relatedperson','Related Person', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'questionnaire','Questionnaire', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'questionnaireresponse','Questionnaire Response', 'view');
 
         /**********************************************************/
 
@@ -282,7 +281,7 @@ return $ACL_UPGRADE = array(
         AclExtended::addObjectAcl('clinikal_api', 'Clinikal API', 'general_settings','General settings');
         AclExtended::addObjectAcl('clinikal_api', 'Clinikal API', 'lists','Lists');
 
-        AclExtended::updateAcl($admin_view,  'Administrators',                                    'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators',                                    'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
         AclExtended::updateAcl($imaging_receptionist_view,  'Imaging receptionist',               'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
         AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager',                  'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
         AclExtended::updateAcl($imaging_doctor_view,  'Imaging doctor',                           'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
@@ -290,7 +289,7 @@ return $ACL_UPGRADE = array(
         AclExtended::updateAcl($imaging_call_center_representative_view,'Imaging representative', 'clinikal_api', 'Clinikal API', 'general_settings','General settings', 'view');
 
 
-        AclExtended::updateAcl($admin_view,  'Administrators',                                    'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators',                                    'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
         AclExtended::updateAcl($imaging_receptionist_view,  'Imaging receptionist',               'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
         AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager',                  'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
         AclExtended::updateAcl($imaging_doctor_view,  'Imaging doctor',                           'clinikal_api', 'Clinikal API', 'lists','lists', 'view');
