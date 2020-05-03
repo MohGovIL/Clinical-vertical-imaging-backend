@@ -91,98 +91,50 @@
 --    behavior: can take a long time.
 
 
-#IfNotTable fhir_rest_elements
- CREATE TABLE `fhir_rest_elements` (
-  `id` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL,
-  `active` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+#IfNotRow questionnaires_schemas form_name form_commitment_questionnaire
 
-ALTER TABLE `fhir_rest_elements`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `fhir_rest_elements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
+VALUES
+('1', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Commitment number'),
+('2', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment date'),
+('3', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment expiration date'),
+('4', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Signing doctor'),
+('5', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'doctor license number');
 #EndIf
 
-#IfNotRow fhir_rest_elements name Organization
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
-('Organization', 1);
-#EndIf
-
-#IfNotRow fhir_rest_elements name Patient
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
-('Patient', 1);
-#EndIf
-
-#IfNotRow fhir_rest_elements name Appointment
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
-('Appointment', 1);
-#EndIf
-
-#IfNotRow fhir_rest_elements name HealthcareService
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
-('HealthcareService', 1);
-#EndIf
-
-#IfNotTable fhir_healthcare_services
-RENAME TABLE `healthcare_services` TO `fhir_healthcare_services`;
-#EndIf
-
-#IfMissingColumn fhir_healthcare_services id
-ALTER TABLE `fhir_healthcare_services` CHANGE `identifier` `id` INT NOT NULL AUTO_INCREMENT;
+#IfNotRow2D questionnaires_schemas qid 4 column_type string
+UPDATE `questionnaires_schemas` SET `column_type` = 'string' WHERE `questionnaires_schemas`.`qid` = 4;
 #EndIf
 
 
-#IfMissingColumn openemr_postcalendar_events pc_priority
-ALTER TABLE `openemr_postcalendar_events` ADD `pc_priority` INT NOT NULL DEFAULT '1' AFTER `pc_gid`;
+REPLACE INTO `facility` (`id`, `name`, `phone`, `fax`, `street`, `city`, `state`, `postal_code`, `country_code`, `federal_ein`, `website`, `email`, `service_location`, `billing_location`, `accepts_assignment`, `pos_code`, `x12_sender_id`, `attn`, `domain_identifier`, `facility_npi`, `tax_id_type`, `color`, `primary_business_entity`, `facility_code`, `extra_validation`, `facility_taxonomy`, `mail_street`, `mail_street2`, `mail_city`, `mail_state`, `mail_zip`, `oid`, `iban`, `info`, `active`)
+VALUES
+('5', 'כללית', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#91AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('6', 'מכבי', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#92AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('7', 'מאוחדת', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#93AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('8', 'לאומית', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#94AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
+('9', 'צה"ל', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#95AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1');
+
+
+UPDATE `list_options` SET `option_id` = '5' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_1';
+UPDATE `list_options` SET `option_id` = '6' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_2';
+UPDATE `list_options` SET `option_id` = '7' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_3';
+UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_4';
+
+
+ALTER TABLE facility AUTO_INCREMENT = 17;
+
+DELETE FROM `registry` WHERE `directory`="commitment_questionnaire";
+
+#IfNotRow registry directory commitment_questionnaire
+INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`) VALUES
+('Commitment questionnaire', 1, 'commitment_questionnaire', 1, 1, '2020-03-14 00:00:00', 0, 'Clinical', '', 0, 0, 'encounters|notes');
 #EndIf
 
-#IfMissingColumn openemr_postcalendar_events pc_service_type
-ALTER TABLE `openemr_postcalendar_events` ADD `pc_service_type` INT NULL DEFAULT NULL AFTER `pc_priority`;
-#EndIf
-
-#IfMissingColumn openemr_postcalendar_events pc_healthcare_service_id
-ALTER TABLE `openemr_postcalendar_events` ADD `pc_healthcare_service_id` INT NULL DEFAULT NULL AFTER `pc_service_type`;
-#EndIf
-
-#IfNotTable encounter_reasoncode_map
-CREATE TABLE encounter_reasoncode_map (
-eid INT(6) UNSIGNED,
-reason_code  INT(6) UNSIGNED
-);
-#EndIf
-
-#IfMissingColumn facility active
-ALTER TABLE facility ADD active int DEFAULT 1;
-#EndIf
-
-#IfNotTable fhir_value_sets
-CREATE TABLE `fhir_value_sets` (
-    `id` VARCHAR(125) NOT NULL,
-    `title` VARCHAR(125) NOT NULL,
-    `active` BOOLEAN NOT NULL DEFAULT 1,
-    PRIMARY KEY(`id`)
-) ENGINE=INNODB DEFAULT CHARSET=UTF8;
-#EndIf
-
-#IfNotTable fhir_value_set_systems
-CREATE TABLE `fhir_value_set_systems` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `vs_id` VARCHAR(125) NOT NULL,
-    `system` VARCHAR(125) NOT NULL,
-    `type` ENUM('All', 'Partial', 'Exclude', 'Filter') NOT NULL,
-    `filter` VARCHAR(125) DEFAULT NULL,
-    PRIMARY KEY(`id`)
-) ENGINE=INNODB DEFAULT CHARSET=UTF8;
-#EndIf
-
-#IfNotTable fhir_value_set_codes
-CREATE TABLE `fhir_value_set_codes` (
-    `vss_id` INT NOT NULL,
-    `code` VARCHAR(125) NOT NULL,
-    PRIMARY KEY(`vss_id`, `code`)
-) ENGINE=INNODB DEFAULT CHARSET=UTF8;
+#IfNotRow2D list_options list_id mh_ins_organizations option_id idf
+INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
+VALUES
+('mh_ins_organizations', 'idf', 'IDF', '0', '0', '0','' ,'1');
 #EndIf
 
 -- no appropriate condition
@@ -222,67 +174,83 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 #EndIf
 
 #IfNotRow fhir_value_sets id service_types
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('service_types', 'Service Types');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('service_types', 'Service Types');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id service_types system clinikal_service_types
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('service_types', 'clinikal_service_types', 'All');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES
+('service_types', 'clinikal_service_types', 'All');
 #EndIf
 
 #IfNotRow fhir_value_sets id reason_codes_1
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('reason_codes_1', 'Ultrasound Reason Codes');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('reason_codes_1', 'Ultrasound Reason Codes');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id reason_codes_1 system clinikal_reason_codes
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES ('reason_codes_1', 'clinikal_reason_codes', 'Filter', '1');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES
+('reason_codes_1', 'clinikal_reason_codes', 'Filter', '1');
 #EndIf
 
 #IfNotRow fhir_value_sets id reason_codes_2
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('reason_codes_2', 'Mammography Reason Codes');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('reason_codes_2', 'Mammography Reason Codes');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id reason_codes_2 system clinikal_reason_codes
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES ('reason_codes_2', 'clinikal_reason_codes', 'Filter', '2');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES
+('reason_codes_2', 'clinikal_reason_codes', 'Filter', '2');
 #EndIf
 
 #IfNotRow fhir_value_sets id reason_codes_3
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('reason_codes_3', 'X-ray Reason Codes');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('reason_codes_3', 'X-ray Reason Codes');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id reason_codes_3 system clinikal_reason_codes
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES ('reason_codes_3', 'clinikal_reason_codes', 'Filter', '3');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES
+('reason_codes_3', 'clinikal_reason_codes', 'Filter', '3');
 #EndIf
 
 #IfNotRow fhir_value_sets id reason_codes_4
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('reason_codes_4', 'CT Reason Codes');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('reason_codes_4', 'CT Reason Codes');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id reason_codes_4 system clinikal_reason_codes
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES ('reason_codes_4', 'clinikal_reason_codes', 'Filter', '4');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES
+ ('reason_codes_4', 'clinikal_reason_codes', 'Filter', '4');
 #EndIf
 
 #IfNotRow fhir_value_sets id reason_codes_5
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('reason_codes_5', 'MRI Reason Codes');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('reason_codes_5', 'MRI Reason Codes');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id reason_codes_5 system clinikal_reason_codes
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES ('reason_codes_5', 'clinikal_reason_codes', 'Filter', '5');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES
+('reason_codes_5', 'clinikal_reason_codes', 'Filter', '5');
 #EndIf
 
 #IfNotRow fhir_value_sets id reason_codes_6
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('reason_codes_6', 'Cardiology Reason Codes');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('reason_codes_6', 'Cardiology Reason Codes');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id reason_codes_6 system clinikal_reason_codes
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES ('reason_codes_6', 'clinikal_reason_codes', 'Filter', '6');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES
+('reason_codes_6', 'clinikal_reason_codes', 'Filter', '6');
 #EndIf
 
 #IfNotRow fhir_value_sets id reason_codes_7
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('reason_codes_7', 'Biopsy Reason Codes');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('reason_codes_7', 'Biopsy Reason Codes');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id reason_codes_7 system clinikal_reason_codes
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES ('reason_codes_7', 'clinikal_reason_codes', 'Filter', '7');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`) VALUES
+('reason_codes_7', 'clinikal_reason_codes', 'Filter', '7');
 #EndIf
 
 #IfNotRow2D list_options list_id lists option_id clinikal_enc_statuses
@@ -297,14 +265,6 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('clinikal_enc_statuses', '7', 'Cancelled', 15, 0, 0, '', '', '', 0, 0, 1, '', 1);
 #EndIf
 
-#IfNotRow fhir_value_sets id encounter_statuses
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('encounter_statuses', 'Encounter Statuses');
-#EndIf
-
-#IfNotRow2D fhir_value_set_systems vs_id encounter_statuses system clinikal_enc_statuses
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('encounter_statuses', 'clinikal_enc_statuses', 'All');
-#EndIf
-
 #IfNotRow2D list_options list_id lists option_id clinikal_app_statuses
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'clinikal_app_statuses', 'Clinikal Appointment Statuses', 0, 0, 0, '', '', '', 0, 0, 1, '', 1),
@@ -316,20 +276,36 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('clinikal_app_statuses', '6', 'Waitlisted', 60, 0, 0, '', '', '', 0, 0, 1, '', 1);
 #EndIf
 
+
+#IfNotRow fhir_value_sets id encounter_statuses
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+ ('encounter_statuses', 'Encounter Statuses');
+#EndIf
+
+#IfNotRow2D fhir_value_set_systems vs_id encounter_statuses system clinikal_enc_statuses
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES
+('encounter_statuses', 'clinikal_enc_statuses', 'All');
+#EndIf
+
+
 #IfNotRow fhir_value_sets id appointment_statuses
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('appointment_statuses', 'Appointment Statuses');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('appointment_statuses', 'Appointment Statuses');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id appointment_statuses system clinikal_app_statuses
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('appointment_statuses', 'clinikal_app_statuses', 'All');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES
+('appointment_statuses', 'clinikal_app_statuses', 'All');
 #EndIf
 
 #IfNotRow fhir_value_sets id patient_tracking_statuses
-INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES ('patient_tracking_statuses', 'Appointment Statuses For Patients Tracking');
+INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
+('patient_tracking_statuses', 'Appointment Statuses For Patients Tracking');
 #EndIf
 
 #IfNotRow2D fhir_value_set_systems vs_id patient_tracking_statuses system clinikal_app_statuses
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES ('patient_tracking_statuses', 'clinikal_app_statuses', 'Partial');
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES
+ ('patient_tracking_statuses', 'clinikal_app_statuses', 'Partial');
 INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
 (LAST_INSERT_ID(), 1),
 (LAST_INSERT_ID(), 2),
@@ -343,69 +319,11 @@ UPDATE `list_options` SET `list_id` = 'clinikal_service_categories' WHERE list_i
 -- no appropriate condition
 UPDATE `list_options` SET `option_id` = 'clinikal_service_categories' WHERE option_id = 'fhir_service_categories';
 
-#IfNotRow fhir_rest_elements name ValueSet
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
-('ValueSet', 1);
-#EndIf
-
-#IfNotRow fhir_rest_elements name Encounter
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
-('Encounter', 1);
-#EndIf
-
-#IfMissingColumn form_encounter status
-ALTER TABLE form_encounter ADD status VARCHAR(100) NULL  AFTER `parent_encounter_id`;
-#EndIf
-
-#IfMissingColumn form_encounter eid
-ALTER TABLE form_encounter ADD eid INT NULL  AFTER `status`;
-#EndIf
-
-#IfMissingColumn form_encounter priority
-ALTER TABLE form_encounter ADD priority INT DEFAULT 0 AFTER `eid`;
-#EndIf
-
-#IfMissingColumn form_encounter service_type
-ALTER TABLE form_encounter ADD service_type INT DEFAULT NULL  AFTER `priority`;
-#EndIf
-
-
-#IfNotTable encounter_reasoncode_map
-CREATE TABLE encounter_reasoncode_map (
-event_id INT(6),
-option_id  INT(6) UNSIGNED
-);
-#EndIf
-
-ALTER TABLE form_encounter MODIFY COLUMN priority INT DEFAULT 1;
-ALTER TABLE `openemr_postcalendar_events` MODIFY COLUMN `pc_priority` INT NOT NULL DEFAULT 1;
-
-#IfNotTable event_codeReason_map
-CREATE TABLE `event_codeReason_map` (
-  `event_id` int(11) NOT NULL,
-  `option_id` varchar(100) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE event_codeReason_map ADD PRIMARY KEY (event_id, option_id);
-#EndIf
-
-#IfColumn fhir_value_sets active
-ALTER TABLE `fhir_value_sets` CHANGE `active` `status` ENUM('active', 'retired') NOT NULL DEFAULT 'active';
-#EndIf
-
-ALTER TABLE `openemr_postcalendar_events` CHANGE
-`pc_healthcare_service_id` `pc_healthcare_service_id` INT NULL DEFAULT NULL COMMENT 'fhir_healthcare_services.id';
-
-ALTER TABLE `fhir_healthcare_services` CHANGE
-`providedBy` `providedBy` INT NULL DEFAULT NULL COMMENT 'facility.id';
-
 -- no appropriate condition
 UPDATE `list_options` SET `title` = 'Pending Approval' WHERE `list_id` = 'clinikal_app_statuses' AND `option_id` = 1;
 
 -- no appropriate condition
 UPDATE `list_options` SET `title` = 'Admitted' WHERE `list_id` = 'clinikal_enc_statuses' AND `option_id` = 2;
-
-
 
 -- FIX FOR APP AND ENCOUNTER STATUS IDS:
 
@@ -467,170 +385,6 @@ INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`
 ('clinikal_app_statuses', 'waitlist', 'Waitlisted', 60, 0, 0, '', '', '', 0, 0, 1, '', 1);
 #EndIf
 
-#IfRow2D globals gl_name vertical_version gl_value develop
-UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
-#EndIf
-
-#IfNotRow fhir_rest_elements name DocumentReference
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES
-('DocumentReference', 1);
-#EndIf
-
-
-#IfNotTable related_person
-CREATE TABLE `related_person` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(255) DEFAULT NULL,
-  `identifier_type` varchar(255) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT 0,
-  `pid` bigint(20) NOT NULL,
-  `relationship` varchar(255) DEFAULT NULL,
-  `phone_home` varchar(255) DEFAULT NULL,
-  `phone_cell` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `gender` varchar(255) DEFAULT NULL,
-   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-#EndIf
-
-#IfNotRow fhir_rest_elements name RelatedPerson
-INSERT INTO `fhir_rest_elements` (`name`, `active`)
-VALUES
-('RelatedPerson', '1');
-#EndIf
-
-#IfMissingColumn form_encounter escort_id
-ALTER TABLE `form_encounter` ADD `escort_id` BIGINT(20) NULL DEFAULT NULL  COMMENT 'related_person.id' AFTER `service_type`;
-#EndIf
-
-
-
-REPLACE INTO `facility` (`id`, `name`, `phone`, `fax`, `street`, `city`, `state`, `postal_code`, `country_code`, `federal_ein`, `website`, `email`, `service_location`, `billing_location`, `accepts_assignment`, `pos_code`, `x12_sender_id`, `attn`, `domain_identifier`, `facility_npi`, `tax_id_type`, `color`, `primary_business_entity`, `facility_code`, `extra_validation`, `facility_taxonomy`, `mail_street`, `mail_street2`, `mail_city`, `mail_state`, `mail_zip`, `oid`, `iban`, `info`, `active`)
-VALUES
-('5', 'כללית', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#91AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('6', 'מכבי', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#92AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('7', 'מאוחדת', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#93AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('8', 'לאומית', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#94AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
-('9', 'צה"ל', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#95AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1');
-
-
-UPDATE `list_options` SET `option_id` = '5' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_1';
-UPDATE `list_options` SET `option_id` = '6' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_2';
-UPDATE `list_options` SET `option_id` = '7' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_3';
-UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_4';
-
-
-ALTER TABLE facility AUTO_INCREMENT = 17;
-
-#IfNotRow fhir_rest_elements name Questionnaire
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Questionnaire', '1');
-#EndIf
-
-#IfNotRow fhir_rest_elements name QuestionnaireResponse
-INSERT INTO `fhir_rest_elements` ( `name`, `active`) VALUES ('QuestionnaireResponse', '1');
-#EndIf
-
-
-#IfNotTable fhir_rest_elements
-CREATE TABLE form_commitment_questionnaire(
-    id bigint(20) NOT NULL AUTO_INCREMENT,
-    encounter varchar(255) DEFAULT NULL,
-    form_id bigint(20) NOT NULL,
-    question_id int(11) NOT NULL,
-    answer text,
-    PRIMARY KEY (`id`)
-);
-
-ALTER TABLE `form_commitment_questionnaire` ADD UNIQUE `unique_index`( `form_id`, `question_id`);
-#EndIf
-
-
-#IfNotTable questionnaires_schemas
-CREATE TABLE questionnaires_schemas(
-    qid int(11) NOT NULL AUTO_INCREMENT,
-    form_name varchar(255) NOT NULL,
-    form_table varchar(255) NOT NULL,
-    column_name varchar(255) NOT NULL,
-    column_type varchar(255) NOT NULL,
-    question varchar(255) DEFAULT NULL,
-    PRIMARY KEY (`qid`)
-);
-
-
-INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
-VALUES
-('1', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Commitment number'),
-('2', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment date'),
-('3', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment expiration date'),
-('4', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Signing doctor'),
-('5', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'doctor license number');
-#EndIf
-
-#IfNotTable questionnaire_response
-CREATE TABLE `questionnaire_response`(
-    id bigint(20) NOT NULL AUTO_INCREMENT,
-    form_name varchar(255) NOT NULL,
-    encounter bigint(20) NOT NULL,
-    subject bigint(20) NOT NULL,
-    subject_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
-    create_date datetime DEFAULT current_timestamp,
-    update_date datetime DEFAULT current_timestamp,
-    create_by bigint(20) NOT NULL,
-    update_by bigint(20) NOT NULL,
-    source  bigint(20) NOT NULL,
-    source_type VARCHAR(255) NOT NULL DEFAULT 'Patient',
-    status  varchar(255) NOT NULL,
-    PRIMARY KEY (`id`)
-);
-
-#EndIf
-
-
-#IfNotRow registry directory form_commitment_questionnaire
-INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`) VALUES
-('Commitment questionnaire', 1, 'commitment_questionnaire', 1, 1, '2020-03-14 00:00:00', 0, 'Clinical', '', 0, 0, 'encounters|notes');
-#EndIf
-
-#IfNotRow2D list_options list_id mh_ins_organizations option_id idf
-INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
-VALUES
-('mh_ins_organizations', 'idf', 'IDF', '0', '0', '0','' ,'1');
-#EndIf
-
-#IfNotRow fhir_rest_elements name Practitioner
-INSERT INTO `fhir_rest_elements` (`name`, `active`) VALUES ('Practitioner', 1);
-#EndIf
-
-
-#IfNotRow2D list_options list_id userlist3 option_id passport
-DELETE FROM `list_options` WHERE `list_id` like "userlist3";
-INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
-VALUES
-('userlist3', 'teudat_zehut', 'Teudat zehut', '10', '1', '0','','1'),
-('userlist3', 'passport', 'Passport', '20', '0', '0','', '1'),
-('userlist3', 'temporary', 'Temporary', '30', '0', '0','' ,'1');
-
-UPDATE `patient_data` SET `mh_type_id` = 'temporary' WHERE `patient_data`.`mh_type_id` = "idtype_3";
-UPDATE `patient_data` SET `mh_type_id` = 'passport' WHERE `patient_data`.`mh_type_id` = "idtype_2";
-UPDATE `patient_data` SET `mh_type_id` = 'id'       WHERE `patient_data`.`mh_type_id` = "idtype_1";
-#EndIf
-
-
-#IfNotRow3D list_options list_id sex option_id unknown activity 0
-
-DELETE FROM `list_options` WHERE `list_id` like "sex";
-
-INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
-VALUES
-('sex', 'male', 'Male', '10', '1', '0','','1'),
-('sex', 'female', 'Female', '20', '0', '0','', '1'),
-('sex', 'other', 'Other', '30', '0', '0','', '1'),
-('sex', 'unknown', 'Unknown', '40', '0', '0','' ,'0');
-
-#EndIf
-
-
-
 #IfNotRow fhir_value_set_systems vs_id identifier_type_list
 INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`)
 VALUES
@@ -651,15 +405,24 @@ INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
 (LAST_INSERT_ID(), 'other');
 
 #IfNotRow fhir_value_sets id gender
-INSERT INTO fhir_value_sets (id, title, status) VALUES('gender', 'Gender', 'active');
+INSERT INTO fhir_value_sets (id, title, status) VALUES
+('gender', 'Gender', 'active');
 #EndIf
 
 #IfNotRow fhir_value_sets id identifier_type_list
-INSERT INTO fhir_value_sets (id, title, status) VALUES('identifier_type_list', 'Identifier Type List', 'active');
+INSERT INTO fhir_value_sets (id, title, status) VALUES
+('identifier_type_list', 'Identifier Type List', 'active');
 #EndIf
 
 
 #IfNotRow globals gl_name fhir_type_validation
 INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
 ('fhir_type_validation', 0, '1');
+#EndIf
+
+
+
+
+#IfRow2D globals gl_name vertical_version gl_value develop
+UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
 #EndIf
