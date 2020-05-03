@@ -93,7 +93,7 @@
 
 #IfNotRow questionnaires_schemas form_name form_commitment_questionnaire
 
-INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
+REPLACE INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
 VALUES
 ('1', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Commitment number'),
 ('2', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment date'),
@@ -103,7 +103,10 @@ VALUES
 #EndIf
 
 #IfNotRow2D questionnaires_schemas qid 4 column_type string
-UPDATE `questionnaires_schemas` SET `column_type` = 'string' WHERE `questionnaires_schemas`.`qid` = 4;
+
+REPLACE INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
+VALUES
+('4', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Signing doctor');
 #EndIf
 
 
