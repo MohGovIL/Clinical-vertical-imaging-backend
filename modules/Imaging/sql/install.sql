@@ -1,10 +1,3 @@
-START TRANSACTION;
-
--- REPLACE INTO `modules` (`mod_id`, `mod_name`, `mod_directory`, `mod_parent`, `mod_type`, `mod_active`, `mod_ui_name`, `mod_relative_link`, `mod_ui_order`, `mod_ui_active`, `mod_description`, `mod_nick_name`, `mod_enc_menu`, `permissions_item_table`, `directory`, `date`, `sql_run`, `type`, `sql_version`, `acl_version`)
--- VALUES
--- (null, 'Imaging', 'Imaging', '', '', 1, 'Imaging', 'public/imaging/', 0, 0, '', '', 'no', NULL, '', '2020-04-28 10:16:11', 0, 1, '', '');
-
-
 
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES
 ('lists', 'clinikal_service_categories', 'Clinikal Service Categories', 0, 0, 0, '', '', '', 0, 0, 1, '', 1),
@@ -181,14 +174,4 @@ DELETE FROM `categories_seq` WHERE `id` = '29';
 INSERT INTO `categories_seq` (`id`) VALUES('9');
 
 
--- FOR EVERY LIST FROM LIST OPTIONS WE USED IN THE FHIR API/ CLINIKAL API WE NEED ADD -
--- FOR EXAMPLE - INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`, `timestamp`) VALUES ('lists','mh_cities','moh cities',311,1,0,'','','',0,0,1,'',1,'2017-03-02 07:07:44');
 
-
--- FOR EVERY NEW COLUNMS IN PATIENT_DATA WE USED IN THE FHIR API/ CLINIKAL API WE NEED ADD
-
---  ALTER TABLE `patient_data`
---  ADD COLUMN <COLUMN> text NULL DEFAULT NULL
-
-
-COMMIT;

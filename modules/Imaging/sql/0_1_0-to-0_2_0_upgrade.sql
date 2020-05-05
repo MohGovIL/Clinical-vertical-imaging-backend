@@ -420,7 +420,7 @@ INSERT INTO fhir_value_sets (id, title, status) VALUES
 
 #IfNotRow globals gl_name fhir_type_validation
 INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
-('fhir_type_validation', 0, '1');
+('fhir_type_validation', 0, '0');
 #EndIf
 
 
