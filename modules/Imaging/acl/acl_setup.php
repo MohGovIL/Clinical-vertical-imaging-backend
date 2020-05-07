@@ -42,6 +42,10 @@ AclExtended::addObjectAcl('client_app', 'Client Application', 'AppointmentsAndEn
 AclExtended::addObjectAcl('client_app', 'Client Application', 'EncounterSheet','Encounter Sheet');
 AclExtended::addObjectAcl('client_app', 'Client Application', 'SuperUser','Super User');
 
+AclExtended::addObjectAcl('client_app', 'Client Application', 'SearchPatient','Search Patient');
+AclExtended::addObjectAcl('client_app', 'Client Application', 'Calendar','Calendar');
+AclExtended::addObjectAcl('client_app', 'Client Application', 'AppointmentDetails','Appointment Details');
+
 
 AclExtended::updateAcl($admin_write, 'Administrators', 'client_app', 'Client Application', 'SuperUser','Super User', 'write');
 
@@ -66,6 +70,9 @@ AclExtended::updateAcl($imaging_receptionist_write, 'Imaging receptionist', 'cli
 AclExtended::updateAcl($imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
 AclExtended::updateAcl($imaging_receptionist_view,  'Imaging receptionist', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
 AclExtended::updateAcl($imaging_receptionist_write, 'Imaging receptionist', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
+AclExtended::updateAcl($imaging_receptionist_view,  'Imaging receptionist', 'client_app', 'Client Application', 'SearchPatient','Search Patient', 'view');
+AclExtended::updateAcl($imaging_receptionist_write,  'Imaging receptionist', 'client_app', 'Client Application', 'Calendar','Calendar', 'write');
+AclExtended::updateAcl($imaging_receptionist_write,  'Imaging receptionist', 'client_app', 'Client Application', 'AppointmentDetails','Appointment Details', 'write');
 
 //Clinic manager ACL
 AclExtended::updateAcl($imaging_clinic_manager_write, 'Imaging manager', 'client_app', 'Client Application', 'PatientTrackingInvited','Patient Tracking Invited', 'write');
@@ -76,8 +83,12 @@ AclExtended::updateAcl($imaging_clinic_manager_write, 'Imaging manager', 'client
 AclExtended::updateAcl($imaging_clinic_manager_write, 'Imaging manager', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
 AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
 AclExtended::updateAcl($imaging_clinic_manager_write, 'Imaging manager', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
+AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager', 'client_app', 'Client Application', 'SearchPatient','Search Patient', 'view');
+AclExtended::updateAcl($imaging_clinic_manager_write,  'Imaging manager', 'client_app', 'Client Application', 'Calendar','Calendar', 'write');
+AclExtended::updateAcl($imaging_clinic_manager_write,  'Imaging manager', 'client_app', 'Client Application', 'AppointmentDetails','Appointment Details', 'write');
 
-//Clinic manager ACL
+
+//Imaging technician_ ACL
 //AclExtended::updateAcl($imaging_technician_write, 'Imaging technician', 'client_app', 'Client Application', 'PatientTrackingInvited','Patient Tracking Invited', 'write');
 AclExtended::updateAcl($imaging_technician_write, 'Imaging technician', 'client_app', 'Client Application', 'PatientTrackingWaitingForExamination','Patient Tracking Waiting for Examination', 'write');
 AclExtended::updateAcl($imaging_technician_write, 'Imaging technician', 'client_app', 'Client Application', 'PatientTrackingWaitingForDecoding','Patient Tracking Waiting for Decoding', 'write');
@@ -86,6 +97,10 @@ AclExtended::updateAcl($imaging_technician_write, 'Imaging technician', 'client_
 //AclExtended::updateAcl($imaging_technician_write, 'Imaging technician', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
 AclExtended::updateAcl($imaging_technician_view,  'Imaging technician', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
 AclExtended::updateAcl($imaging_technician_write, 'Imaging technician', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
+AclExtended::updateAcl($imaging_technician_view,  'Imaging technician', 'client_app', 'Client Application', 'SearchPatient','Search Patient', 'view');
+AclExtended::updateAcl($imaging_technician_write,  'Imaging technician', 'client_app', 'Client Application', 'Calendar','Calendar', 'write');
+AclExtended::updateAcl($imaging_technician_write,  'Imaging technician', 'client_app', 'Client Application', 'AppointmentDetails','Appointment Details', 'write');
+
 
 //Doctor ACL
 //AclExtended::updateAcl($imaging_doctor_write, 'Imaging doctor', 'client_app', 'Client Application', 'PatientTrackingInvited','Patient Tracking Invited', 'write');
@@ -96,8 +111,11 @@ AclExtended::updateAcl($imaging_doctor_write, 'Imaging doctor', 'client_app', 'C
 //AclExtended::updateAcl($imaging_doctor_write, 'Imaging doctor', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
 AclExtended::updateAcl($imaging_doctor_view,  'Imaging doctor', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
 AclExtended::updateAcl($imaging_doctor_write, 'Imaging doctor', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
+AclExtended::updateAcl($imaging_doctor_view,  'Imaging doctor', 'client_app', 'Client Application', 'SearchPatient','Search Patient', 'view');
+AclExtended::updateAcl($imaging_doctor_write,  'Imaging doctor', 'client_app', 'Client Application', 'Calendar','Calendar', 'write');
+AclExtended::updateAcl($imaging_doctor_write,  'Imaging doctor', 'client_app', 'Client Application', 'AppointmentDetails','Appointment Details', 'write');
 
-//Clinic manager ACL
+//Imaging representative ACL
 //AclExtended::updateAcl($imaging_call_center_representative_write, 'Imaging representative', 'client_app', 'Client Application', 'PatientTrackingInvited','Patient Tracking Invited', 'write');
 //AclExtended::updateAcl($imaging_call_center_representative_write, 'Imaging representative', 'client_app', 'Client Application', 'PatientTrackingWaitingForExamination','Patient Tracking Waiting for Examination', 'write');
 //AclExtended::updateAcl($imaging_call_center_representative_write, 'Imaging representative', 'client_app', 'Client Application', 'PatientTrackingWaitingForDecoding','Patient Tracking Waiting for Decoding', 'write');
@@ -106,6 +124,10 @@ AclExtended::updateAcl($imaging_doctor_write, 'Imaging doctor', 'client_app', 'C
 AclExtended::updateAcl($imaging_call_center_representative_write, 'Imaging representative', 'client_app', 'Client Application', 'AddPatient','Add Patient', 'write');
 AclExtended::updateAcl($imaging_call_center_representative_view,  'Imaging representative', 'client_app', 'Client Application', 'AppointmentsAndEncounters','Appointments And Encounters', 'view');
 //AclExtended::updateAcl($imaging_call_center_representative_write, 'Imaging representative', 'client_app', 'Client Application', 'EncounterSheet','Encounter Sheet', 'write');
+AclExtended::updateAcl($imaging_call_center_representative_view,  'Imaging representative', 'client_app', 'Client Application', 'SearchPatient','Search Patient', 'view');
+AclExtended::updateAcl($imaging_call_center_representative_write,  'Imaging representative', 'client_app', 'Client Application', 'Calendar','Calendar', 'write');
+AclExtended::updateAcl($imaging_call_center_representative_write,  'Imaging representative', 'client_app', 'Client Application', 'AppointmentDetails','Appointment Details', 'write');
+
 
 //Insert the 'notes' object from the 'patients' section
 //AclExtended::updateAcl($receptionist_write, 'Vaccine receptionists', 'patients', 'Patients', 'notes', 'Patient Notes (write,addonly optional)', 'write');
