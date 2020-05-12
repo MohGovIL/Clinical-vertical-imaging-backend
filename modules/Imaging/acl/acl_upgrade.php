@@ -265,7 +265,7 @@ return $ACL_UPGRADE = array(
         AclExtended::updateAcl($imaging_technician_view,  'Imaging technician', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'view');
         AclExtended::updateAcl($imaging_technician_view,  'Imaging technician', 'fhir_api', 'FHIR API', 'questionnaire','Questionnaire', 'view');
         AclExtended::updateAcl($imaging_technician_view,  'Imaging technician', 'fhir_api', 'FHIR API', 'questionnaireresponse','Questionnaire Response', 'view');
-
+        AclExtended::updateAcl($imaging_technician_view,  'Imaging technician', 'fhir_api', 'FHIR API', 'patient','Patient', 'view');
         /**********************************************************/
 
         AclExtended::updateAcl($imaging_call_center_representative_write, 'Imaging representative', 'fhir_api', 'FHIR API', 'patient','Patient', 'write');
