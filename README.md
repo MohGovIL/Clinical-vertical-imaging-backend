@@ -1,5 +1,5 @@
 # Description
-This module in this repository contains functionality relevant to imaging centers.  
+The module in this repository contains functionality relevant to imaging centers.  
 Note that the default data loaded into the database when this module is installed, is data that fits the needs of Israeli imaging centers. The data might need to be adjusted for use in other locations.
 
 # Installation
