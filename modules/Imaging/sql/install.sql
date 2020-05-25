@@ -174,4 +174,5 @@ DELETE FROM `categories_seq` WHERE `id` = '29';
 INSERT INTO `categories_seq` (`id`) VALUES('9');
 
 
-
+INSERT INTO `fhir_questionnaire` (`name`, `directory`, `state`, `aco_spec`) VALUES
+('Commitment questionnaire', 'commitment_questionnaire', '1', 'encounters|notes');
