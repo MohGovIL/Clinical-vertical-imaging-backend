@@ -434,3 +434,21 @@ INSERT INTO `fhir_questionnaire` (`name`, `directory`, `state`, `aco_spec`) VALU
 ('Commitment questionnaire', 'commitment_questionnaire', '1', 'encounters|notes');
 #EndIf
 
+
+#IfNotRow questionnaires_schemas question Payment amount
+INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
+VALUES
+('6', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Payment amount');
+#EndIf
+
+#IfNotRow questionnaires_schemas question Payment method
+INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
+VALUES
+('7', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Payment method');
+#EndIf
+
+#IfNotRow questionnaires_schemas question Receipt number
+INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
+VALUES
+('8', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Receipt number');
+#EndIf

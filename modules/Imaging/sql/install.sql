@@ -129,7 +129,10 @@ VALUES
 ('2', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment date'),
 ('3', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment expiration date'),
 ('4', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Signing doctor'),
-('5', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'doctor license number');
+('5', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'doctor license number'),
+('6', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Payment amount'),
+('7', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Payment method'),
+('8', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Receipt number');
 
 
 INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`)
