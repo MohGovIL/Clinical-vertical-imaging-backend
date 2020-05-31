@@ -417,18 +417,23 @@ INSERT INTO fhir_value_sets (id, title, status) VALUES
 ('identifier_type_list', 'Identifier Type List', 'active');
 #EndIf
 
-
 #IfNotRow globals gl_name fhir_type_validation
 INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
 ('fhir_type_validation', 0, '0');
 #EndIf
 
-
-
-
 #IfRow2D globals gl_name vertical_version gl_value develop
 UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
 #EndIf
+
+
+DELETE FROM `registry` WHERE `directory`="commitment_questionnaire";
+
+#IfNotRow fhir_questionnaire directory commitment_questionnaire
+INSERT INTO `fhir_questionnaire` (`name`, `directory`, `state`, `aco_spec`) VALUES
+('Commitment questionnaire', 'commitment_questionnaire', '1', 'encounters|notes');
+#EndIf
+
 
 #IfNotRow questionnaires_schemas question Payment amount
 INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
