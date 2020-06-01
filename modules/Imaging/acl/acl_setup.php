@@ -238,7 +238,7 @@ AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager', 'fhir_a
 AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager', 'fhir_api', 'FHIR API', 'questionnaire','Questionnaire', 'view');
 AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager', 'fhir_api', 'FHIR API', 'questionnaireresponse','Questionnaire Response', 'view');
 AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager', 'fhir_api', 'FHIR API', 'condition','Condition', 'view');
-AclExtended::updateAcll($imaging_clinic_manager_view,  'Imaging manager', 'fhir_api', 'FHIR API', 'medication_statement','Medication Statement Response', 'view');
+AclExtended::updateAcl($imaging_clinic_manager_view,  'Imaging manager', 'fhir_api', 'FHIR API', 'medication_statement','Medication Statement Response', 'view');
 
 
 /**********************************************************/
