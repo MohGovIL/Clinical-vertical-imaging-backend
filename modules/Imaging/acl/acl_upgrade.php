@@ -11,7 +11,7 @@ use OpenEMR\Common\Acl\AclExtended;
 
 return $ACL_UPGRADE = array(
 
-    '0.1.0' => function () {
+    '0.2.0' => function () {
         AclExtended::addNewACL('Imaging Technician', 'imaging_technician', 'write', 'Things that imaging technician can modify');
         AclExtended::addNewACL('Imaging Technician', 'imaging_technician', 'view', 'Things that imaging technician can read but not modify');
         AclExtended::addNewACL('Imaging doctor', 'imaging_doctor', 'write', 'Things that imaging doctor can modify');
