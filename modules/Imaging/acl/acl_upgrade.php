@@ -153,8 +153,8 @@ return $ACL_UPGRADE = array(
         AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'documentreference','Document Reference', 'view');
         AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'questionnaire','Questionnaire', 'view');
         AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'questionnaireresponse','Questionnaire Response', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'condition','Condition', 'view');
-        AclExtended::updateAcl($admin_view,  'Administrators', 'fhir_api', 'FHIR API', 'medicationstatement','Medication Statement Response', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'condition','Condition', 'view');
+        AclExtended::updateAcl($admin_write,  'Administrators', 'fhir_api', 'FHIR API', 'medicationstatement','Medication Statement Response', 'view');
 
         /**********************************************************/
 
