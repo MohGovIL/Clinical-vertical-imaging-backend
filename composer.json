@@ -1,6 +1,6 @@
 {
   "name": "clinikal/vertical-imaging-backend",
-  "description": "React app for OpenEMR",
+  "description": "Backend of an imaging vertical for integration on OpenEMR",
   "type": "clinikal-vertical",
   "authors": [
     {
