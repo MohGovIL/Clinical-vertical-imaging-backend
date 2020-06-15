@@ -1,6 +1,6 @@
 {
   "name": "clinikal/vertical-imaging-backend",
-  "description": "Backend of the Clinikal Imaging Vertical for integration in OpenEMR",
+  "description": "Imaging Vertical Backend from the Clinikal project",
   "type": "clinikal-vertical",
   "authors": [
     {
