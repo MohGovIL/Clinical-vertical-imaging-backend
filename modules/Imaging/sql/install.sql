@@ -141,10 +141,8 @@ VALUES
 ('8', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Receipt number');
 
 
-INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`)
-VALUES
-('Commitment questionnaire', 1, 'commitment_questionnaire', 1, 1, '2020-03-14 00:00:00', 0, 'Clinical', '', 0, 0, 'encounters|notes');
-
+INSERT INTO `fhir_questionnaire` (`name`, `directory`, `state`, `aco_spec`) VALUES
+('Commitment questionnaire', 'commitment_questionnaire', '1', 'encounters|notes');
 
 -- --------------------------------------------------------
 
@@ -183,5 +181,4 @@ DELETE FROM `categories_seq` WHERE `id` = '29';
 INSERT INTO `categories_seq` (`id`) VALUES('9');
 
 
-INSERT INTO `fhir_questionnaire` (`name`, `directory`, `state`, `aco_spec`) VALUES
-('Commitment questionnaire', 'commitment_questionnaire', '1', 'encounters|notes');
+
