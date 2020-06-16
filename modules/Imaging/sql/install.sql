@@ -86,10 +86,10 @@ VALUES
 
 INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`)
 VALUES
-(LAST_INSERT_ID(), 'pending'),
-(LAST_INSERT_ID(), 'booked'),
-(LAST_INSERT_ID(), 'cancelled'),
-(LAST_INSERT_ID(), 'noshow');
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'pending'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'booked'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'cancelled'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'noshow');
 -- -------------------------------
 
 

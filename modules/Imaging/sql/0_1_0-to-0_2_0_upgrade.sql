@@ -309,11 +309,13 @@ INSERT INTO `fhir_value_sets` (`id`, `title`) VALUES
 #IfNotRow2D fhir_value_set_systems vs_id patient_tracking_statuses system clinikal_app_statuses
 INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`) VALUES
  ('patient_tracking_statuses', 'clinikal_app_statuses', 'Partial');
-INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
-(LAST_INSERT_ID(), 1),
-(LAST_INSERT_ID(), 2),
-(LAST_INSERT_ID(), 4),
-(LAST_INSERT_ID(), 5);
+
+INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`)
+VALUES
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'pending'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'booked'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'cancelled'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'noshow');
 #EndIf
 
 -- no appropriate condition
@@ -394,19 +396,6 @@ VALUES
 ('identifier_type_list', 'userlist3', 'All', NULL);
 #EndIf
 
-
-DELETE FROM `fhir_value_set_systems` WHERE `fhir_value_set_systems`.`vs_id` = "gender";
-DELETE FROM `fhir_value_set_codes` WHERE `fhir_value_set_codes`.`code` IN('other','male','female');
-
-INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`)
-VALUES
-('gender', 'sex', 'Partial', NULL);
-
-INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
-(LAST_INSERT_ID(), 'female'),
-(LAST_INSERT_ID(), 'male'),
-(LAST_INSERT_ID(), 'other');
-
 #IfNotRow fhir_value_sets id gender
 INSERT INTO fhir_value_sets (id, title, status) VALUES
 ('gender', 'Gender', 'active');
@@ -452,3 +441,33 @@ INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_t
 VALUES
 ('8', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Receipt number');
 #EndIf
+
+
+-- replace LAST_INSERT_ID()
+DELETE FROM `fhir_value_set_systems` WHERE `fhir_value_set_systems`.`vs_id` = "gender";
+DELETE FROM `fhir_value_set_codes` WHERE `fhir_value_set_codes`.`code` IN('other','male','female');
+
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`, `filter`)
+VALUES
+('gender', 'sex', 'Partial', NULL);
+
+INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`) VALUES
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'gender' AND type = 'Partial'), 'female'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'gender' AND type = 'Partial'), 'male'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'gender' AND type = 'Partial'), 'other');
+
+
+DELETE FROM `fhir_value_set_systems` WHERE `fhir_value_set_systems`.`vs_id` = "patient_tracking_statuses";
+DELETE FROM `fhir_value_set_codes` WHERE `fhir_value_set_codes`.`code` IN('pending','booked','cancelled','noshow');
+
+INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`)
+VALUES
+('patient_tracking_statuses', 'clinikal_app_statuses', 'Partial');
+
+INSERT INTO `fhir_value_set_codes` (`vss_id`, `code`)
+VALUES
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'pending'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'booked'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'cancelled'),
+((SELECT id FROM fhir_value_set_systems WHERE vs_id = 'patient_tracking_statuses' AND type = 'Partial'), 'noshow');
+-- -------------------------------
