@@ -1,8 +1,25 @@
--- setting for Isreali inaging clinics
+-- setting for Isreali imaging clinics
 REPLACE INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES ('date_display_format', '0', '2'),('language_default', '0', 'Hebrew');
 
 -- update menu for the admin user
 UPDATE `users` SET `main_menu_role` = 'clinikal.json' WHERE `users`.`id` = 1;
+
+-- setting for client side app
+INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_react_vertical', 0, 'imaging');
+
+INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_hide_appoitments', 0, '0');
+
+INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_pa_commitment_form', 0, '1');
+
+
+INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_pa_arrival_way', 0, '0');
+
+INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_pa_next_enc_status', 0, 'arrived');
 
 
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `mapping`, `notes`, `codes`, `toggle_setting_1`, `toggle_setting_2`, `activity`, `subtype`, `edit_options`) VALUES

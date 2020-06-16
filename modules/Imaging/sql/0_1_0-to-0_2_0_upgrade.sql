@@ -91,6 +91,25 @@
 --    behavior: can take a long time.
 
 
+-- always restore to default in upgrade
+REPLACE INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_react_vertical', 0, 'imaging');
+
+REPLACE INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_hide_appoitments', 0, '0');
+
+
+REPLACE INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_pa_commitment_form', 0, '1');
+
+
+REPLACE INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_pa_arrival_way', 0, '0');
+
+REPLACE INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
+('clinikal_pa_next_enc_status', 0, 'arrived');
+
+
 #IfNotRow questionnaires_schemas form_name form_commitment_questionnaire
 
 REPLACE INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
