@@ -109,26 +109,6 @@ REPLACE INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
 REPLACE INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
 ('clinikal_pa_next_enc_status', 0, 'arrived');
 
-
-#IfNotRow questionnaires_schemas form_name form_commitment_questionnaire
-
-REPLACE INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
-VALUES
-('1', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'Commitment number'),
-('2', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment date'),
-('3', 'commitment_questionnaire','form_commitment_questionnaire', 'date', 'Commitment expiration date'),
-('4', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Signing doctor'),
-('5', 'commitment_questionnaire','form_commitment_questionnaire', 'integer', 'doctor license number');
-#EndIf
-
-#IfNotRow2D questionnaires_schemas qid 4 column_type string
-
-REPLACE INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
-VALUES
-('4', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Signing doctor');
-#EndIf
-
-
 REPLACE INTO `facility` (`id`, `name`, `phone`, `fax`, `street`, `city`, `state`, `postal_code`, `country_code`, `federal_ein`, `website`, `email`, `service_location`, `billing_location`, `accepts_assignment`, `pos_code`, `x12_sender_id`, `attn`, `domain_identifier`, `facility_npi`, `tax_id_type`, `color`, `primary_business_entity`, `facility_code`, `extra_validation`, `facility_taxonomy`, `mail_street`, `mail_street2`, `mail_city`, `mail_state`, `mail_zip`, `oid`, `iban`, `info`, `active`)
 VALUES
 ('5', 'כללית', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '0', '0', '71', NULL, NULL, NULL, NULL, '', '#91AFFF', '0', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, '1'),
@@ -143,15 +123,7 @@ UPDATE `list_options` SET `option_id` = '6' WHERE `list_options`.`list_id` = 'mh
 UPDATE `list_options` SET `option_id` = '7' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_3';
 UPDATE `list_options` SET `option_id` = '8' WHERE `list_options`.`list_id` = 'mh_ins_organizations' AND `list_options`.`option_id` = 'hmo_4';
 
-
 ALTER TABLE facility AUTO_INCREMENT = 17;
-
-DELETE FROM `registry` WHERE `directory`="commitment_questionnaire";
-
-#IfNotRow registry directory commitment_questionnaire
-INSERT INTO `registry` (`name`, `state`, `directory`, `sql_run`, `unpackaged`, `date`, `priority`, `category`, `nickname`, `patient_encounter`, `therapy_group_encounter`, `aco_spec`) VALUES
-('Commitment questionnaire', 1, 'commitment_questionnaire', 1, 1, '2020-03-14 00:00:00', 0, 'Clinical', '', 0, 0, 'encounters|notes');
-#EndIf
 
 #IfNotRow2D list_options list_id mh_ins_organizations option_id idf
 INSERT INTO `list_options` (`list_id`, `option_id`, `title`, `seq`, `is_default`, `option_value`, `notes`,`activity`)
@@ -433,34 +405,6 @@ INSERT INTO `globals` (`gl_name`, `gl_index`, `gl_value`) VALUES
 #IfRow2D globals gl_name vertical_version gl_value develop
 UPDATE `globals` SET `gl_value` = '0.1.0' WHERE `gl_name` = 'vertical_version';
 #EndIf
-
-
-DELETE FROM `registry` WHERE `directory`="commitment_questionnaire";
-
-#IfNotRow fhir_questionnaire directory commitment_questionnaire
-INSERT INTO `fhir_questionnaire` (`name`, `directory`, `state`, `aco_spec`) VALUES
-('Commitment questionnaire', 'commitment_questionnaire', '1', 'encounters|notes');
-#EndIf
-
-
-#IfNotRow questionnaires_schemas question Payment amount
-INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
-VALUES
-('6', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Payment amount');
-#EndIf
-
-#IfNotRow questionnaires_schemas question Payment method
-INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
-VALUES
-('7', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Payment method');
-#EndIf
-
-#IfNotRow questionnaires_schemas question Receipt number
-INSERT INTO `questionnaires_schemas` (`qid`, `form_name`,`form_table`, `column_type`, `question`)
-VALUES
-('8', 'commitment_questionnaire','form_commitment_questionnaire', 'string', 'Receipt number');
-#EndIf
-
 
 -- replace LAST_INSERT_ID()
 DELETE FROM `fhir_value_set_systems` WHERE `fhir_value_set_systems`.`vs_id` = "gender";
