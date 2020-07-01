@@ -29,6 +29,11 @@ $imaging_receptionist_view =AclExtended::addNewACL('Imaging receptionist', 'imag
 
 /**********************************************************/
 
+AclExtended::addObjectAcl('client_app', 'Client Application', 'PatientTrackingInvited','Patient Tracking Invited');
+AclExtended::addObjectAcl('client_app', 'Client Application', 'PatientTrackingWaitingForExamination','Patient Tracking Waiting for Examination');
+AclExtended::addObjectAcl('client_app', 'Client Application', 'PatientTrackingWaitingForDecoding','Patient Tracking Waiting for Decoding');
+AclExtended::addObjectAcl('client_app', 'Client Application', 'PatientTrackingFinished','Patient Tracking Finished');
+
 
 
 AclExtended::updateAcl($admin_write, 'Administrators', 'client_app', 'Client Application', 'SuperUser','Super User', 'write');
