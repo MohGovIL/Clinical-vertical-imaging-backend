@@ -72,7 +72,6 @@ VALUES
 ('reason_codes_5', 'MRI Reason Codes'),
 ('reason_codes_6', 'Cardiology Reason Codes'),
 ('reason_codes_7', 'Biopsy Reason Codes'),
-('appointment_statuses', 'Appointment Statuses'),
 ('identifier_type_list', 'Identifier Type List');
 
 INSERT INTO `fhir_value_set_systems` (`vs_id`, `system`, `type`,`filter`)
@@ -86,7 +85,6 @@ VALUES
 ('reason_codes_5', 'clinikal_reason_codes', 'Filter', '5'),
 ('reason_codes_6', 'clinikal_reason_codes', 'Filter', '6'),
 ('reason_codes_7', 'clinikal_reason_codes', 'Filter', '7'),
-('appointment_statuses', 'clinikal_app_statuses', 'All', NULL),
 ('identifier_type_list', 'userlist3', 'All', NULL);
 
 
