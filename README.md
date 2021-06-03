@@ -44,4 +44,3 @@ This enables us to use any modules, styles, and menus downloaded by composer int
 
 All modules can now be registered and enabled in the Manage Modules screen.  
 
-This project is sponsored by the Israeli Ministry Of Health.
